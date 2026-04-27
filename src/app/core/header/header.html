@@ -1,0 +1,26 @@
+<header>
+    <h1>Tech shop</h1>
+    <div class="nav-div">
+        <nav>
+         <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>
+    </ul>
+    </nav>
+    </div>
+   
+
+    <img src="svg/bars-solid.svg" (click)="menuToggle()">
+
+    <div class="burger-menu" [class.appear-menu]="AppearMenu">
+        <div class="burger-list">
+             <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>
+    </ul>
+        </div>
+        
+    </div>
+</header>
