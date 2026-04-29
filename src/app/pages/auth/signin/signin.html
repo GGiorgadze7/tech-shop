@@ -1,0 +1,7 @@
+<h1>Sign In</h1>
+
+<form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm.value)">
+  <input type="email" name="email" ngModel required email/>
+  <input type="password" name="password" ngModel required />
+  <button [disabled]="signInForm.invalid">Submit</button>
+</form>
