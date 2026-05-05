@@ -1,0 +1,155 @@
+<div class="main-div">
+  <h1>რეგისტრაცია</h1>
+
+  <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm.value)">
+    <div class="name-lastname">
+      <div class="name-div">
+        <label for="firstname">სახელი</label>
+        <input
+          type="text"
+          name="firstname"
+          id="firstname"
+          placeholder="სახელი"
+          [(ngModel)]="firstName"
+          #firstNameInp="ngModel"
+          [class.invalid]="firstNameInp.invalid && firstNameInp.touched"
+          required
+        />
+      </div>
+
+      <div class="lastname-div">
+        <label for="lastname">გვარი</label>
+        <input
+          type="text"
+          name="lastname"
+          id="lastname"
+          placeholder="გვარი"
+          [(ngModel)]="lastName"
+          #lastNameInp="ngModel"
+          required
+          [class.invalid]="lastNameInp.invalid && lastNameInp.touched"
+        />
+      </div>
+    </div>
+
+    <div class="mail-div flexColumn">
+      <label for="email">ემაილი</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="youremail@gmail.com"
+        [(ngModel)]="email"
+        #emailinp="ngModel"
+        required
+        email
+        [class.invalid]="emailinp.invalid && emailinp.touched"
+      />
+    </div>
+
+    <div class="age-div flexColumn">
+      <label for="age">ასაკი</label>
+      <input
+        type="number"
+        name="age"
+        id="age"
+        [(ngModel)]="age"
+        #ageInp="ngModel"
+        required
+        min="18"
+        [class.invalid]="ageInp.invalid && ageInp.touched"
+      />
+    </div>
+
+    <div class="gender-div flexColumn">
+      <label for="gender">სქესი</label>
+      <select name="gender" id="gender" [(ngModel)]="gender" placeholder="მამრობითი" required>
+        <option value="male">მამრობითი</option>
+        <option value="female">მდედრობითი</option>
+      </select>
+    </div>
+
+    <div class="number-div flexColumn">
+      <label for="number">ტელეფონის ნომერი</label>
+      <input
+        type="number"
+        name="number"
+        id="number"
+        placeholder="+9955511245"
+        [(ngModel)]="phoneNumber"
+        #phoneInp="ngModel"
+        [class.invalid]="phoneInp.invalid && phoneInp.touched"
+        required
+      />
+    </div>
+
+    <div class="zipcode flexColumn">
+      <label for="zipcode">ზიპკოდი</label>
+      <input
+        type="number"
+        name="zipcode"
+        id="zipcode"
+        placeholder="1100"
+        [(ngModel)]="zipCode"
+        #zipcodeInp="ngModel"
+        [class.invalid]="zipcodeInp.invalid && zipcodeInp.touched"
+        required
+      />
+    </div>
+
+    <div class="address-div flexColumn">
+      <label for="address">მისამართი</label>
+      <input
+        type="text"
+        name="address"
+        id="address"
+        placeholder="თბილისი, საბურთალო"
+        [(ngModel)]="address"
+        #addresssInp="ngModel"
+        [class.invalid]="addresssInp.invalid && addresssInp.touched"
+        required
+      />
+    </div>
+
+    <div class="password-div">
+      <div class="passwrod flexColumn">
+        <label for="password">პაროლი</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="******"
+          [(ngModel)]="password"
+          #passwordInp="ngModel"
+          [class.invalid]="passwordInp.invalid && passwordInp.touched"
+
+          required
+        />
+      </div>
+      <div class="passwrod-confirm flexColumn">
+        <label for="password-confirm">გაიმეორეთ პაროლი</label>
+        <input
+          type="password"
+          name="password-confirm"
+          id="password-confirm"
+          placeholder="******"
+          [(ngModel)]="confirmPassword"
+          #confirmPasswordInp="ngModel"
+          [class.invalid]="confirmPasswordInp.invalid && confirmPasswordInp.touched"
+          required
+        />
+      </div>
+    </div>
+
+    @if(errorMesage) {
+      <p>{{errorMesage}}</p>
+    } @else {
+      <p>{{succesMesage}}</p>
+    }
+
+    <div class="btn-div flexColumn">
+      <button type="submit" [disabled]="signUpForm.invalid">რეგისტრაცია</button>
+      <span>გაქვთ უკვე ანგარიში? <a routerLink="/signin">ავტორიზაცია</a></span>
+    </div>
+  </form>
+</div>

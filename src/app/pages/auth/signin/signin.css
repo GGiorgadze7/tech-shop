@@ -1,16 +1,53 @@
 :host {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.main-div {
+  background-color: rgb(158, 156, 156);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-width: 22%;
+  min-height: 70%;
+  padding: 40px 30px;
+  border-radius: 15px;
+}
+
+
+
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+label {
+  padding-left: 3px;
+  font-size: 17px;
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 12px 15px;
+  outline: none;
+  font-size: 13px;
+}
+
+button {
+    margin: 0 auto;
+    padding: 8px;
+    width: 50%;
+    font-size: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }

@@ -1,0 +1,146 @@
+.card {
+  width: 340px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  background: rgba(0, 128, 0, 0);
+  border-radius: 0.9rem;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.img-div {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-self: center;
+  position: relative;
+  top: 0;
+  object-fit: contain;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.9rem 0.9rem 0 0;
+}
+
+.card img {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-self: center;
+  position: relative;
+  top: 0;
+  object-fit: contain;
+}
+
+.price-div {
+  display: flex;
+  gap: 15px;
+}
+
+.card-description {
+  background-color: #a5a1a1;
+  padding: 18px;
+  width: 100%;
+  height: 50%;
+  border-radius: 0 0 0.9rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.prd-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 13px;
+}
+
+.price-div {
+  display: flex;
+  align-items: center;
+}
+
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+.discount-price {
+  text-decoration: line-through;
+  color: #666464;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.discount-perc {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.rating {
+  margin-top: 8px;
+  color: #f1c40f;
+  font-size: 14px;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button img {
+  width: 20px;
+}
+
+.add-button button {
+  display: flex;
+  gap: 6px ;
+  align-items: center;
+  width: 55%;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4a6cf7;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-button button:hover {
+  background: #2d365c;
+}
+
+.card:hover .add-button button {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.discount-alert {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e74c3c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}

@@ -1,1 +1,18 @@
-<p>home works!</p>
+@if (isLoading()) {
+  <div class="loading-div">
+    <p>იტვირთება!</p>
+  </div>
+} @else {
+  <div class="home-main-div">
+<h1>ჩვენი პროდუქტები</h1>
+
+<section class="products">
+  @for (item of productsList(); track item._id) {
+    <app-product-card [productData]="item"></app-product-card>
+  }
+</section>
+</div>
+
+}
+
+

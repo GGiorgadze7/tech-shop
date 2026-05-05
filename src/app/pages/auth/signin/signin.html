@@ -1,7 +1,14 @@
-<h1>Sign In</h1>
+<div class="main-div">
+  <h1>შესვლა</h1>
 
 <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm.value)">
-  <input type="email" name="email" ngModel required email/>
-  <input type="password" name="password" ngModel required />
-  <button [disabled]="signInForm.invalid">Submit</button>
+  <label for="email">ემაილი</label>
+  <input id="email" type="email" name="email" ngModel required email placeholder="ემაილი"/>
+  <label for="password">პაროლი</label>
+  <input id="password" type="password" name="password" ngModel required placeholder="პაროლი"/>
+  <button [disabled]="signInForm.invalid">შესვლა</button>
+
+  <span>არ გაქვთ ექაუნტი? <a routerLink="/signup">რეგისტრაცია</a></span>
 </form>
+</div>
+
