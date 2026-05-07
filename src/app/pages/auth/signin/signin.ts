@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-signin',
@@ -9,8 +11,26 @@ import { RouterLink } from "@angular/router";
   styleUrl: './signin.css',
 })
 export class Signin {
-onSubmit(data: any){
-  console.log(data);
-}
+
+ signInData = {
+    email: '',
+    password: '',
+  };
+
+  private http = inject(HttpClient);
+  private router = inject(Router);
+
+  onSubmit() {
+    this.http.post('https://api.everrest.educata.dev/auth/sign_in', this.signInData).subscribe({
+      next: (data: any) => {
+        (localStorage.setItem('access_token', data.access_token),
+          localStorage.setItem('refresh_token', data.refresh_token));
+        this.router.navigateByUrl('/');
+      },
+      error: () => {
+        alert('მოხდა შეცდომა');
+      },
+    });
+  }
 
 }

@@ -6,6 +6,7 @@
   <div class="card-description">
     <h2 class="prd-title">{{ productData.title }}</h2>
 
+
     <p>{{ productData.warranty }} წლიანი გარანტია</p>
 
     <div class="price-div">
@@ -18,9 +19,12 @@
       @if (productData.price.discountPercentage !== 0) {
         <p class="discount-perc">-{{ productData.price.discountPercentage / 100 | percent }}</p>
       }
+
+      
       
       
     </div>
+
 
     <p class="rating">🌟{{ productData.rating }}</p>
 
@@ -31,7 +35,7 @@
   </div>
 
   <div class="discount-alert">
-    @if (productData.price.discountPercentage !== 0) {
+    @if (productData.price.discountPercentage > 0) {
       <p>ფასდაკლება!</p>
     }
   </div>

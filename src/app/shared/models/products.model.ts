@@ -12,4 +12,5 @@ export interface ProductInterface {
   rating: number;
   stock: number;
   total: number;
+  description: string;
 }
