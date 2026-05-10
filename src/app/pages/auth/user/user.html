@@ -1,0 +1,44 @@
+<div class="user-profile">
+  <h2 class="title">მომხმარებლის პროფილი</h2>
+
+  @if (userData()) {
+
+    <div class="avatar-div">
+
+      <div class="name-div">
+      @if (userData().gender === "FEMALE") {
+      <img src="/svg/female-avatar1.png" alt="">
+    } @else if (userData().gender === "MALE") {
+      <img src="/svg/male-avatar1.png" alt="">
+    }
+
+    
+      <div class="fl-name-div">
+         <h1>{{userData().firstName}}</h1>
+      <h1>{{userData().lastName}}</h1>
+      </div>
+    </div>
+
+    <div class="email-div">
+      <h1>ემაილი:</h1>
+      <h2>{{userData().email}}</h2>
+    </div>
+
+    @if (userData().verified === true) {
+      <h1 class="verify">ვერიფიკაცირებულია</h1>
+    } @else {
+      <h1>არ არის ვერიფიცირებული!</h1>
+    }
+
+    </div>
+    
+
+
+
+  
+
+  }
+
+  
+  <button class="logout-btn" (click)="logout()">გასვლა</button>
+</div>

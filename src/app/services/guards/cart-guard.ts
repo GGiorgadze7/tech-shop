@@ -1,7 +1,7 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 
-export const signinGuard: CanActivateFn = (route, state) => {
+export const cartGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const isLoggedIn = localStorage.getItem('access_token');
 

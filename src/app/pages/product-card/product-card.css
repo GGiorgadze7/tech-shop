@@ -68,7 +68,6 @@
   align-items: center;
 }
 
-
 .price {
   font-size: 20px;
   font-weight: bold;
@@ -106,7 +105,7 @@
 
 .add-button button {
   display: flex;
-  gap: 6px ;
+  gap: 6px;
   align-items: center;
   width: 55%;
   position: absolute;

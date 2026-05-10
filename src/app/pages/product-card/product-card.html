@@ -1,41 +1,36 @@
 <div class="card">
   <div class="img-div">
-    <img [src]="productData.thumbnail" alt="" />
+    <img [src]="product.thumbnail" alt="" />
   </div>
 
   <div class="card-description">
-    <h2 class="prd-title">{{ productData.title }}</h2>
+    <h2 class="prd-title">{{ product.title }}</h2>
 
-
-    <p>{{ productData.warranty }} წლიანი გარანტია</p>
+    <p>{{ product.warranty }} წლიანი გარანტია</p>
 
     <div class="price-div">
-      <p class="price">{{ productData.price.current | currency }}</p>
+      <p class="price">{{ product.price.current | currency }}</p>
 
-      @if (productData.price.beforeDiscount !== productData.price.current) {
-          <p class="discount-price">{{ productData.price.beforeDiscount | currency }}</p>
+      @if (product.price.beforeDiscount !== product.price.current) {
+        <p class="discount-price">{{ product.price.beforeDiscount | currency }}</p>
       }
 
-      @if (productData.price.discountPercentage !== 0) {
-        <p class="discount-perc">-{{ productData.price.discountPercentage / 100 | percent }}</p>
+      @if (product.price.discountPercentage !== 0) {
+        <p class="discount-perc">-{{ product.price.discountPercentage / 100 | percent }}</p>
       }
-
-      
-      
-      
     </div>
 
-
-    <p class="rating">🌟{{ productData.rating }}</p>
+    <p class="rating">🌟{{ product.rating }}</p>
 
     <div class="add-button">
-      <button class="add-buton"><img src="svg/cart-plus-solid.svg">კალათში დამატება</button>
+      <button class="add-buton" routerLink="/cart">
+        <img src="svg/cart-plus-solid.svg" />კალათში დამატება
+      </button>
     </div>
-    
   </div>
 
   <div class="discount-alert">
-    @if (productData.price.discountPercentage > 0) {
+    @if (product.price.discountPercentage > 0) {
       <p>ფასდაკლება!</p>
     }
   </div>

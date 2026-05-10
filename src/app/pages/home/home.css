@@ -16,12 +16,45 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-   background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
 }
 
 .products {
+  padding: 0 30px;
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.title {
+  margin-bottom: 60px;
+}
+
+.np-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.np-btn button {
+  width: 100px;
+  gap: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.np-btn button:hover {
+  scale: 1.05;
+  background-color: #0058b6;
+}
+
+.np-btn button:active {
+  outline: #007bff 1px solid;
 }

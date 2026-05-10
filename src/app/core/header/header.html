@@ -14,7 +14,7 @@
     </nav>
   </div>
 
-  <img src="svg/bars-solid.svg" (click)="menuToggle()" />
+  <img src="" (click)="menuToggle()" />
 
   <div class="burger-menu" [class.appear-menu]="AppearMenu">
     <div class="burger-list">
@@ -28,9 +28,22 @@
         <li><a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()" >contact</a></li>
 
         <li><a routerLink="/signin" routerLinkActive="active" (click)="menuToggle()">Signin</a></li>
+      
       </ul>
     </div>
   </div>
 
-  <a class="signinBtn" routerLink="/signin" routerLinkActive="active">Sign In</a>
+   <div class="btns"> 
+    <button class="user-img" routerLink="/cart">
+        <img src="svg/cart-arrow-down-solid.svg" alt="">
+       </button>
+
+     <button routerLink="/signin" class="user-img">
+        <img src="svg/user-solid.svg" alt="user">
+       </button>
+
+       
+   </div>
+  
+
 </header>
