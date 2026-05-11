@@ -1,0 +1,64 @@
+:host {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.wrapper {
+  min-width: 20%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 120px;
+}
+
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px ;
+  width: 100%;
+}
+
+.oldpass-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px    ;
+}
+
+.newpass-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px    ;
+}
+
+form {
+    display: flex;
+}
+
+label {
+    padding-left: 2px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px;
+    width: 40%;
+    align-self: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(47, 100, 47);
+    color: white;
+}

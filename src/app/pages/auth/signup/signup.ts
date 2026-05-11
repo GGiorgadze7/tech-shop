@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,35 +11,30 @@ import { RouterLink, Router } from '@angular/router';
   styleUrl: './signup.css',
 })
 export class Signup {
-  // signup ngmodel
-
   signupData = {
-  firstName:'',
-  lastName: '',
-  age:18,
-  email: '',
-  password : '',
-  address:'',
-  phone:'+995577189408',
-  zipcode :'0101',
-  avatar: 'https://linkedin.com',
-  gender:'MALE',
+    firstName: '',
+    lastName: '',
+    age: 18,
+    email: '',
+    password: '',
+    address: '',
+    phone: '+995577189408',
+    zipcode: '0101',
+    avatar: 'https://linkedin.com',
+    gender: 'MALE',
   };
 
-
   verifyData = {
-    email: ''
-  }
+    email: '',
+  };
 
-
-  
   confirmPassword = '';
   errorMessage = '';
   successMessage = '';
 
-
-  private http  =inject(HttpClient);
+  private http = inject(HttpClient);
   private router = inject(Router);
+  private notification = inject(NotificationService);
 
   onSubmit() {
     if (this.signupData.password !== this.confirmPassword) {
@@ -46,22 +42,17 @@ export class Signup {
       return;
     }
 
-
     this.http.post('https://api.everrest.educata.dev/auth/sign_up', this.signupData).subscribe({
       next: (response) => {
         console.log(response);
-        this.successMessage = 'რეგისტრაცია წარმატებით დასრულდა';
-        this.errorMessage = '';
+        this.notification.success('რეგისტრაცია წარმატებით დასრულდა');
         this.router.navigateByUrl('/signin');
       },
-      
+
       error: (error) => {
         console.error(error);
-        this.errorMessage = 'რეგისტრაცია ვერ განხორციელდა';
-        this.successMessage = '';
-      }
+        this.notification.error('რეგისტრაცია ვერ განხორციელდა');
+      },
     });
-
-    
   }
 }

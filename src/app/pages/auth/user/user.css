@@ -91,3 +91,10 @@
     font-size: 22px;
     color: rgb(20, 172, 20);
 }
+
+
+.verify-alert {
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+}

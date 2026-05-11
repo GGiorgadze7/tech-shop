@@ -8,7 +8,6 @@ import { authGuard } from './services/guards/auth-guard';
 import { cartGuard } from './services/guards/cart-guard';
 import { Passrecover } from './pages/auth/passrecover/passrecover';
 
-
 export const routes: Routes = [
   { path: '', component: Home, title: 'Tech Shop' },
   { path: 'about', component: About, title: 'About' },
@@ -38,7 +37,15 @@ export const routes: Routes = [
     canActivate: [cartGuard],
   },
 
-  { path: 'passrecover', loadComponent: () => import('./pages/auth/passrecover/passrecover').then((m) => m.Passrecover)},
+  {
+    path: 'passrecover',
+    loadComponent: () => import('./pages/auth/passrecover/passrecover').then((m) => m.Passrecover),
+  },
+
+  {
+    path: 'passrecover2',
+    loadComponent: () => import('./pages/auth/passrecover2/passrecover2').then((m) => m.Passrecover2),
+  },
 
   { path: '**', component: Page404, title: 'You Have Lost' },
 ];

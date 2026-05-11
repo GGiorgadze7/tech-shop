@@ -1,6 +1,8 @@
 <div class="user-profile">
   <h2 class="title">მომხმარებლის პროფილი</h2>
 
+
+
   @if (userData()) {
 
     <div class="avatar-div">
@@ -30,13 +32,16 @@
       <h1>არ არის ვერიფიცირებული!</h1>
     }
 
+
+
+     <span><a routerLink="/passrecover2">პაროლის შეცვლა</a> </span>
+
     </div>
     
 
 
-
-  
-
+  } @else {
+    <p class="verify-alert">გაიარეთ ვერიფიკაცია თქვენი ინფორმაციის სანახავად!</p>
   }
 
   

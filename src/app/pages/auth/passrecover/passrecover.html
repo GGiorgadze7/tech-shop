@@ -1,7 +1,33 @@
-<p>პაროლის აღდგენა</p>
+<div class="wrapper">
+  <p>პაროლის აღდგენა</p>
 
-<div class="passrecover">
-    <form #passrecover="ngForm" >
-        <label for=""></label>
+  <div class="passrecover">
+    <form #passrecover="ngForm" (ngSubmit)="recoveryPass()">
+      <label for="email">ემაილი</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        [(ngModel)]="recoveryData.email"
+        required
+        email
+        placeholder="ემაილი"
+      />
+
+      @if (successMessage) {
+        <p class="success-message">{{ successMessage }}</p>
+      } @else if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <button [disabled]="passrecover.invalid">დადასტურება</button>
+
+      @if (!hasToken) {
+        <p><a routerLink="/">მთავარ გვერდზე გადასვლა</a></p>
+      } @else {
+        <p><a routerLink="/signin">ავტორიზაცია</a></p>
+      }
+
     </form>
+  </div>
 </div>

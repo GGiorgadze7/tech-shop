@@ -1,0 +1,6 @@
+@if (notification.message(); as message) {
+  <div class="toast" [class.success]="message.type === 'success'" [class.error]="message.type === 'error'" [class.info]="message.type === 'info'">
+    <span>{{ message.text }}</span>
+    <button type="button" (click)="notification.clear()" aria-label="Close notification">x</button>
+  </div>
+}

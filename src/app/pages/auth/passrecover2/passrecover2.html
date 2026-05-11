@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <h1>პაროლის შეცვლა</h1>
+
+
+  <form #oldpassword="ngForm" (ngSubmit)="changePass()">
+    <div class="oldpass-div">
+         <label for="oldpassword">ძველი პაროლი</label>
+    <input
+      type="password"
+      name="oldpassword"
+      id="oldpassword"
+      [(ngModel)]="changePassData.oldPassword"
+      required
+      placeholder="ძველი პაროლი"
+    />
+    </div>
+
+    <div class="newpass-div">
+         <label for="newpassword">ახალი პაროლი</label>
+    <input
+      type="password"
+      name="newpassword"
+      id="newpassword"
+      [(ngModel)]="changePassData.newPassword"
+      required
+      placeholder="ახალი პაროლი"
+    />
+
+    </div>
+   
+   
+    <button [disabled]="oldpassword.invalid">დადასტურება</button>
+
+    <span>დაგავიწყდათ ძველი პაროლი?<a routerLink="/passrecover"> Email-ით აღდგენა</a></span>
+
+  </form>
+</div>
