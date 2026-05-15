@@ -34,7 +34,7 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
-    canActivate: [cartGuard],
+    // canActivate: [cartGuard],
   },
 
   {

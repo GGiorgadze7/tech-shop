@@ -27,11 +27,6 @@ export class Home implements OnInit {
   ngOnInit() {
     this.getProducts();
   }
-  
-
-
-
-
 
   getProducts() {
     this.http
@@ -49,16 +44,18 @@ export class Home implements OnInit {
   }
 
   nextPage() {
-    if (this.productsList()?.total! > this.pageIndex() * this.pageSize()) {
-      this.pageIndex.update((x) => x + 1);
+    if (this.productsList() && this.pageIndex() * this.pageSize() < this.productsList().total) {
+      this.pageIndex.update((page) => page + 1);
       this.getProducts();
+      window.scrollTo({ top: 0});
     }
   }
 
   prevPage() {
     if (this.pageIndex() > 1) {
-      this.pageIndex.update((x) => x - 1);
+      this.pageIndex.update((page) => page - 1);
       this.getProducts();
+      window.scrollTo({ top: 0});
     }
   }
 }

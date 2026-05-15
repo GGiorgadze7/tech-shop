@@ -6,6 +6,8 @@
   <div class="card-description">
     <h2 class="prd-title">{{ product.title }}</h2>
 
+    <p>მარაგშია: {{product.stock}}</p>
+
     <p>{{ product.warranty }} წლიანი გარანტია</p>
 
     <div class="price-div">
@@ -15,23 +17,24 @@
         <p class="discount-price">{{ product.price.beforeDiscount | currency }}</p>
       }
 
-      @if (product.price.discountPercentage !== 0) {
-        <p class="discount-perc">-{{ product.price.discountPercentage / 100 | percent }}</p>
-      }
+    
     </div>
 
     <p class="rating">🌟{{ product.rating }}</p>
 
     <div class="add-button">
-      <button class="add-buton" routerLink="/cart">
+      <button type="button" [disabled]="product.stock === 0" class="add-buton" (click)="addToCart()">
         <img src="svg/cart-plus-solid.svg" />კალათში დამატება
+
+        
       </button>
     </div>
   </div>
 
-  <div class="discount-alert">
-    @if (product.price.discountPercentage > 0) {
-      <p>ფასდაკლება!</p>
+  
+     @if (product.price.discountPercentage > 0) {
+      <span class="discount">-{{ product.price.discountPercentage }}%</span>
     }
-  </div>
+    
+  
 </div>

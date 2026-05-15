@@ -14,8 +14,19 @@
   </div>
 
   <div class="np-btn">
-    <button (click)="prevPage()">წინა</button>
-    <span>{{ pageIndex() }}</span>
-    <button (click)="nextPage()">შემდეგი</button>
-  </div>
+        <button type="button" (click)="prevPage()" [disabled]="pageIndex() === 1">Prev</button>
+
+        <span> {{ pageIndex() }} გვერდი</span>
+
+        <button
+          type="button"
+          (click)="nextPage()"
+          [disabled]="pageIndex() * pageSize() >= productsList().total"
+        >
+          Next
+        </button>
+      </div>
+
+
+  
 }

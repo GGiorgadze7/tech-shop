@@ -1,1 +1,29 @@
-<p>cart works!</p>
+<div class="wrapper">
+  <h1 class="title">თქვენი კალათა:</h1>
+  <div class="product-cart">
+
+    @if (cartProducts()) {
+
+      @for (item of cartProducts(); track item._id) {
+        <div class="cart-item">
+            <div class="img-div">
+                 <img [src]="item.thumbnail" alt="">
+            </div>
+         
+          <p>{{ item.title }}</p>
+          <p>რაოდენობა: {{ item.quantity }}</p>
+          <p>ფასი: {{ item.pricePerQuantity | currency }}</p>
+        </div>
+      }
+
+      <div class="cart-total">
+        <p>სულ პროდუქტი: {{ cartData().total.products }}</p>
+        <p>სულ ფასი: {{ cartData().total.price.current | currency }}</p>
+      </div>
+
+    } @else {
+      <h2>კალათი ცარიელია</h2>
+    }
+
+  </div>
+</div>

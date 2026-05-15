@@ -1,145 +1,146 @@
 .card {
-  width: 340px;
-  height: 90%;
+  width: 100%;
+  max-width: 340px;
+  min-height: 470px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
   background: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
-  background: rgba(0, 128, 0, 0);
-  border-radius: 0.9rem;
+  border-radius: 1rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.09);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   position: relative;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 36px 72px rgba(15, 23, 42, 0.14);
 }
 
 .img-div {
   width: 100%;
-  height: 50%;
+  min-height: 230px;
   display: flex;
-  align-self: center;
-  position: relative;
-  top: 0;
-  object-fit: contain;
-  background-color: rgb(255, 255, 255);
-  border-radius: 0.9rem 0.9rem 0 0;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 18px;
 }
 
 .card img {
-  width: 100%;
-  height: 70%;
-  display: flex;
-  align-self: center;
-  position: relative;
-  top: 0;
+  max-width: 100%;
+  max-height: 220px;
   object-fit: contain;
 }
 
-.price-div {
-  display: flex;
-  gap: 15px;
-}
-
 .card-description {
-  background-color: #a5a1a1;
-  padding: 18px;
   width: 100%;
-  height: 50%;
-  border-radius: 0 0 0.9rem 0.9rem;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 16px;
+  flex: 1;
 }
 
 .prd-title {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 13px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0f172a;
+}
+
+.card-description p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .price-div {
   display: flex;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2ecc71;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #047857;
 }
 
 .discount-price {
+  font-size: 0.95rem;
+  color: #6b7280;
   text-decoration: line-through;
-  color: #666464;
-  margin-left: 8px;
-  font-size: 14px;
-}
-
-.discount-perc {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-left: 6px;
 }
 
 .rating {
-  margin-top: 8px;
-  color: #f1c40f;
-  font-size: 14px;
+  color: #ca8a04;
+  font-size: 0.95rem;
 }
 
 .add-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.add-button img {
-  width: 20px;
+  width: 100%;
 }
 
 .add-button button {
+  width: 100%;
   display: flex;
-  gap: 6px;
+  justify-content: center;
   align-items: center;
-  width: 55%;
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  opacity: 0;
-  visibility: hidden;
-  padding: 10px 20px;
+  gap: 0.6rem;
+  padding: 14px 16px;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
-  background: #4a6cf7;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.add-button button:hover {
-  background: #2d365c;
-}
-
-.card:hover .add-button button {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: none;
 }
 
-.discount-alert {
+.add-button button:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.add-button button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.discount {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #e74c3c;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 12px;
+  top: 14px;
+  left: 14px;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .card-description {
+    padding: 16px;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+  .add-button button {
+    padding: 12px 14px;
+  }
 }

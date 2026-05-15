@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './user.css',
 })
 export class User {
+  
   userData = signal<any>(null);
   private http = inject(HttpClient);
 
