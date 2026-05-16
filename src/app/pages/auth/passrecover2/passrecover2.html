@@ -1,10 +1,15 @@
 <div class="wrapper">
+    <h2>Tech <span class="title-span">Shop</span></h2>
     <h1>პაროლის შეცვლა</h1>
 
 
   <form #oldpassword="ngForm" (ngSubmit)="changePass()">
     <div class="oldpass-div">
+      <div class="label-div">
+        <img src="/svg/lock-solid.svg" alt="">
          <label for="oldpassword">ძველი პაროლი</label>
+      </div>
+        
     <input
       type="password"
       name="oldpassword"
@@ -12,11 +17,16 @@
       [(ngModel)]="changePassData.oldPassword"
       required
       placeholder="ძველი პაროლი"
+      minlength="8"
     />
     </div>
 
     <div class="newpass-div">
+      <div class="label-div">
+        <img src="/svg/lock-solid.svg" alt="">
          <label for="newpassword">ახალი პაროლი</label>
+      </div>
+         
     <input
       type="password"
       name="newpassword"
@@ -24,9 +34,18 @@
       [(ngModel)]="changePassData.newPassword"
       required
       placeholder="ახალი პაროლი"
+      minlength="8"
     />
 
     </div>
+
+    @if (changePassData.oldPassword === changePassData.newPassword ) {
+      <p class="invalid">პაროლები ემთხვევა ერთმანეთს</p>
+    }
+
+    @if (changePassData.oldPassword && changePassData.newPassword.length < 8) {
+      <p class="invalid">პაროლი მოკლეა</p>
+    }
    
    
     <button [disabled]="oldpassword.invalid">დადასტურება</button>

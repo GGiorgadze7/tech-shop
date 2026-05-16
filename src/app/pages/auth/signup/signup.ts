@@ -18,7 +18,7 @@ export class Signup {
     email: '',
     password: '',
     address: '',
-    phone: '+995577189408',
+    phone: '+995577109337',
     zipcode: '0101',
     avatar: 'https://linkedin.com',
     gender: 'MALE',
@@ -37,6 +37,11 @@ export class Signup {
   private notification = inject(NotificationService);
 
   onSubmit() {
+    if (this.signupData.age < 18) {
+      this.errorMessage = 'რეგისტრაციისთვის თქვენ უნდა იყოთ 18+';
+      return;
+    }
+
     if (this.signupData.password !== this.confirmPassword) {
       this.errorMessage = 'პაროლები არ ემთხვევა';
       return;

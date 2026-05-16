@@ -6,7 +6,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
+  padding: 55px 0;
+  
 }
 
 .flexColumn {
@@ -15,7 +16,7 @@
 }
 
 .main-div {
-  background-color: rgb(158, 156, 156);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +26,15 @@
   min-height: 90%;
   padding: 40px 30px;
   border-radius: 15px;
+  transition: all 0.3s;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
 }
+
+.main-div:hover {
+  scale: 1.01;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+}
+
 
 form {
   display: flex;
@@ -47,7 +56,7 @@ label {
 
 input {
   border-radius: 10px;
-  border: none;
+  border: 0.3px solid rgb(129, 129, 129);
   padding: 12px 15px;
   outline: none;
   font-size: 16px;
@@ -60,7 +69,6 @@ input {
 
 select {
   border-radius: 10px;
-  border: none;
   padding: 12px 15px;
   outline: none;
 }
@@ -84,13 +92,33 @@ select {
     padding:10px;
     font-size: 18px;
     cursor: pointer;
+    background-color: blue;
+    color: white;
     border-radius: 10px;
     border: none;
     margin-top: 10px;
 
 }
 
+.btn-div button:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
+
 
 .invalid {
   border: 1px solid red;
+}
+
+
+.title-span {
+  color: blue;
+}
+
+.invalid-pass {
+  color: red;
+}
+
+.success {
+  border: 1px solid green;
 }

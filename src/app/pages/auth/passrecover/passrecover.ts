@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-passrecover',
@@ -16,6 +17,7 @@ export class Passrecover {
   };
 
   hasToken = false;
+  notification = inject(NotificationService);
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -33,13 +35,14 @@ export class Passrecover {
     this.http.post('https://api.everrest.educata.dev/auth/recovery', this.recoveryData).subscribe({
       next: (response) => {
         console.log(response);
-        this.successMessage =
-          'პაროლის აღდგენის მოთხოვნა წარმატებით გაიგზავნა. გთხოვთ, შეამოწმოთ თქვენი ელ-ფოსტა.';
+        this.notification.success(
+          'პაროლის აღდგენის მოთხოვნა წარმატებით გაიგზავნა. გთხოვთ, შეამოწმოთ თქვენი ელ-ფოსტა.',
+        );
         this.navigate.navigateByUrl('/passrecover2');
       },
       error: (error) => {
         console.log(error);
-        this.errorMessage = 'ელ-ფოსტა არ არსებობს ან მოხდა შეცდომა.';
+        this.notification.error('მოხდა შეცდომა, სცადეთ თავიდან!');
       },
     });
   }

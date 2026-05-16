@@ -1,9 +1,10 @@
 :host {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0 60px;
+  padding-bottom: 60px;
 }
 
 .title {
@@ -14,7 +15,8 @@
   text-align: center;
 }
 
-.products {
+ .products {
+  scroll-margin-top: 100px;
   width: 100%;
   max-width: 1300px;
   display: grid;
@@ -60,4 +62,182 @@
 .np-btn span {
   color: #334155;
   font-weight: 600;
+}
+
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.live-search {
+ margin-top: 40px;
+margin-bottom: 30px;
+}
+
+.live-search input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.live-stock {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  
+}
+
+.slider {
+  width: 100%;
+  max-height: 700px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+
+
+.slider .first-slide {
+  width: 100%;
+  height: 700px;
+  transform: translateX(0  );
+  top: 0;
+  right: 0;
+  position: relative;
+
+  
+}
+
+.slider .second-slide {
+   width: 100%;
+  height: 700px;
+  top: 0;
+  right: 0;
+  
+  position: absolute;
+}
+
+.active-slide {
+  transform: translateX(-100%);
+  position: absolute;
+}
+
+
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+
+.next-slide {
+  position: absolute;
+  color: white;
+  right: 3%;
+  top: 45%;
+ 
+  font-size: 35px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.prev-slide {
+  position: absolute;
+  color: white;
+  left: 3%;
+  top: 45%;
+  font-size: 35px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.first-slide .info-div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 22%;
+    color: white;
+    left: 15%;
+}
+
+.first-slide .info-div h1 {
+  font-size: 38px;
+}
+
+.first-slide .info-div p {
+  font-size: 20px;
+  margin: 10px 0   20px;
+  max-width: 450px;
+
+}
+
+.first-slide .info-div a {
+  width: 40%;
+  padding: 10px;
+  color: white;
+  
+}
+
+
+.first-slide .info-div button {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  background-color: #1d4ed8;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 20px;
+}
+
+.first-slide .info-div button:hover {
+  scale: 1.1;
+}
+
+
+.second-slide .info-div {
+  position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 22%;
+    color: white;
+    left: 15%;
+}
+
+.second-slide .info-div h1 {
+  font-size: 38px;
+}
+
+
+.second-slide .info-div p {
+   font-size: 20px;
+  margin: 10px 0   20px;
+  max-width: 600px;
+}
+
+
+.second-slide .info-div button {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  background-color: #1d4ed8;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+}
+
+.second-slide .info-div button:hover {
+  scale: 1.1;
+}
+
+.first-slide .title-span, .second-slide .title-span {
+  color: blue;
 }

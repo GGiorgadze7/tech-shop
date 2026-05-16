@@ -1,3 +1,29 @@
+<div class="slider">
+  <span class="next-slide" (click)="appearSlider()"> > </span>
+  <span class="prev-slide" (click)="appearSlider()"> < </span>
+  <div class="first-slide" [class.active-slide]="AppearSlide">
+    <img src="/svg/275819.jpg" alt="" >
+    <div class="info-div">
+      <h1>Tech <span class="title-span">Space</span> </h1>
+      <p>შეიძინე ყველაზე მაღალ ხარისხიანი ტექნიკა ყველაზე დაბალ ფასად!</p>
+      <span>ლეპტოპები, ტელეფონები, საათები, გეიმინგ კომპიუტერები და სხვა.</span>
+      <button><a href="#productsId">ჩვენი პროდუქტები</a></button>
+    </div>
+    
+  </div>
+  <div class="second-slide"[class.active-slide]="AppearSlide">
+    <img src="/svg/The_best_tech_and_desk_accessories_this_year.webp" alt="">
+    <div class="info-div">
+      <h1>Tech <span class="title-span">Space</span></h1>
+      <p>მოიხიბლე ჩვენი პროდუქციით? გვეწვიეთ ჩვენს რომელიმე ფილიალში ან გამოიწერე ონლაინ და მიიღე შეკვეთა სულ რაღაც 1 დღეში.</p>
+      <button routerLink="/about">ჩვენს შესახებ</button>
+    </div>
+  </div>
+ 
+</div>
+
+
+
 @if (!productsList()) {
   <div class="loading-div">
     <p>იტვირთება!</p>
@@ -5,7 +31,24 @@
 } @else {
   <h1 class="title">ჩვენი პროდუქტები</h1>
 
-  <div class="products">
+  <div class="live-stock">
+     <div class="live-search">
+    <input
+      type="search"
+      placeholder="Search"
+      [ngModel]="liveSearchKeyword()"
+      (ngModelChange)="liveSearch($event)"
+    />
+  </div>
+
+  <div class="all-stock">
+    <p>პროდუქტების რაოდენობა: {{productsList().total}}</p>
+  </div>
+  </div>
+ 
+  
+
+  <div class="products" id="productsId">
     @if (productsList()) {
       @for (item of productsList().products; track item._id) {
         <app-product-card [product]="item"></app-product-card>

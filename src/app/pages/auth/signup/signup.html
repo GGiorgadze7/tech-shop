@@ -1,4 +1,5 @@
 <div class="main-div">
+  <h2>Tech <span class="title-span">Space</span></h2>
   <h1>რეგისტრაცია</h1>
 
   <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
@@ -59,6 +60,11 @@
         min="18"
         [class.invalid]="ageInp.invalid && ageInp.touched"
       />
+
+      @if (signupData.age < 18) {
+        <p>მინიმალური ასაკი:18</p>
+      }
+
     </div>
 
     <div class="gender-div flexColumn">
@@ -109,7 +115,6 @@
           [(ngModel)]="signupData.password"
           #passwordInp="ngModel"
           [class.invalid]="passwordInp.invalid && passwordInp.touched"
-
           required
         />
       </div>
@@ -125,6 +130,19 @@
           [class.invalid]="confirmPasswordInp.invalid && confirmPasswordInp.touched"
           required
         />
+
+        @if(signupData.password != confirmPassword) {
+          <p class="invalid-pass">პაროლები არ ემთხვევა</p>
+        }
+
+        @if (signupData.password && confirmPassword.length < 8) {
+          <p class="invalid-pass">პაროლი მოკლეა</p>
+        }
+
+        @if (signupData.password && confirmPassword.length > 8) {
+
+        }
+
       </div>
     </div>
 

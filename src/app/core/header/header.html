@@ -1,31 +1,33 @@
 <header>
-  <h1>Tech Space</h1>
+  <img class="logo-img" src="/svg/gemini-svg.svg" alt="logo" routerLink="/">
   <div class="nav-div">
     <nav>
       <ul>
         <li>
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
+            >მთავარი</a
           >
         </li>
-        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">ჩვენს შესახებ</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">კონტაქტი</a></li>
       </ul>
     </nav>
   </div>
 
-  <img src="" (click)="menuToggle()" />
+  <img src="/svg/bars-solid.svg" (click)="menuToggle()" />
+
+   
 
   <div class="burger-menu" [class.appear-menu]="AppearMenu">
     <div class="burger-list">
       <ul>
         <li>
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-           (click)="menuToggle()" >Home</a
+           (click)="menuToggle()" >მთავარი</a
           >
         </li>
-        <li><a routerLink="/about" routerLinkActive="active" (click)="menuToggle()" >About</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()" >contact</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="menuToggle()" >ჩვენს შესახებ</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()" >კონტაქტი</a></li>
 
         <li><a routerLink="/signin" routerLinkActive="active" (click)="menuToggle()">Signin</a></li>
       

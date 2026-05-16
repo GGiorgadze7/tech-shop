@@ -8,7 +8,7 @@
 }
 
 .main-div {
-  background-color: rgb(158, 156, 156);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,16 +19,45 @@
   padding: 40px 30px;
   border-radius: 15px;
   margin-bottom: 100px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+  transition: all 0.3s;
+}
+
+.main-div:hover {
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
+  scale: 1.03;
 }
 
 
+.title-span {
+  color: blue;
+}
+
+.label-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label-div img {
+  width: 18px;
+}
+
+.email-label-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.email-label-div img {
+  width: 16px;
+}
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
-
 
 label {
   padding-left: 3px;
@@ -37,18 +66,25 @@ label {
 
 input {
   border-radius: 10px;
-  border: none;
+  border: 0.3px solid rgb(129, 129, 129);
   padding: 12px 15px;
   outline: none;
   font-size: 13px;
 }
 
 button {
-    margin: 0 auto;
-    padding: 8px;
-    width: 50%;
-    font-size: 17px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
+  background-color: blue;
+  color: white;
+  margin: 0 auto;
+  padding: 8px;
+  width: 50%;
+  font-size: 17px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: gray;
 }

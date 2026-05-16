@@ -1,11 +1,20 @@
 <div class="main-div">
-  <h1>შესვლა</h1>
+  <h2>Tech <span class="title-span">Shop</span></h2>
+  <h1>ავტორიზაცია</h1>
 
 <form #signInForm="ngForm" (ngSubmit)="onSubmit()">
-  <label for="email">ემაილი</label>
+  <div class="label-div">
+    <img src="/svg/envelope-regular.svg" alt="">
+    <label for="email">ემაილი</label>
+  </div>
+  
   <input id="email" type="email" name="email" [(ngModel)]="signInData.email" required email placeholder="ემაილი"/>
-  <label for="password">პაროლი</label>
-  <input id="password" type="password" name="password" [(ngModel)]="signInData.password" required placeholder="პაროლი"/>
+  <div class="email-label-div">
+    <img src="/svg/lock-solid.svg" alt="">
+     <label for="password">პაროლი</label>
+  </div>
+ 
+  <input id="password" type="password" name="password" [(ngModel)]="signInData.password" required placeholder="პაროლი" minlength="8"/>
   <button [disabled]="signInForm.invalid">შესვლა</button>
 
   <span>არ გაქვთ ექაუნტი? <a routerLink="/signup">რეგისტრაცია</a></span>

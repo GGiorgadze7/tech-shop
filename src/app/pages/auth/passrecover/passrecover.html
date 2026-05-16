@@ -1,9 +1,14 @@
 <div class="wrapper">
-  <p>პაროლის აღდგენა</p>
+  <h1>Tech <span class="title-span">Shop</span></h1>
+  <p class="title">პაროლის აღდგენა</p>
 
   <div class="passrecover">
     <form #passrecover="ngForm" (ngSubmit)="recoveryPass()">
-      <label for="email">ემაილი</label>
+      <div class="label-div">
+        <img src="/svg/envelope-regular.svg" alt="">
+        <label for="email">ემაილი</label>
+      </div>
+      
       <input
         type="email"
         name="email"
