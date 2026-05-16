@@ -34,7 +34,13 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
-    // canActivate: [cartGuard],
+  },
+
+  {
+    path: 'product/:id',
+    loadComponent: () =>
+      import('./pages/product-details/product-details').then((m) => m.ProductDetails),
+    title: 'product-details',
   },
 
   {
@@ -44,7 +50,8 @@ export const routes: Routes = [
 
   {
     path: 'passrecover2',
-    loadComponent: () => import('./pages/auth/passrecover2/passrecover2').then((m) => m.Passrecover2),
+    loadComponent: () =>
+      import('./pages/auth/passrecover2/passrecover2').then((m) => m.Passrecover2),
   },
 
   { path: '**', component: Page404, title: 'You Have Lost' },

@@ -1,0 +1,93 @@
+<section class="product-details-section">
+  <div class="container">
+    <a class="back-link" routerLink="/">პროდუქტის გვერდზე გადასვლა</a>
+
+    @if (productData(); as product) {
+      <article class="details-shell">
+        <div class="media-panel">
+          <div class="main-image">
+            @if (hasDiscount(product)) {
+              <span class="discount-badge">-{{ product.price.discountPercentage }}%</span>
+            }
+
+            <img [src]="currentImage()" [alt]="product.title" />
+          </div>
+
+          @if (galleryImages().length > 0) {
+            <div class="thumb-list" aria-label="Product gallery">
+              @for (image of galleryImages(); track image) {
+                <button
+                  type="button"
+                  class="thumb-button"
+                  [class.active]="currentImage() === image"
+                  (click)="selectImage(image)"
+                >
+                  <img [src]="image" [alt]="product.title" />
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="info-panel">
+          <div class="title-block">
+            <div class="title-top">
+              <span class="brand-pill">{{ product.brand }}</span>
+              <span class="rating">რეიტინგი {{ product.rating }}/5</span>
+            </div>
+
+            <h1>{{ product.title }}</h1>
+            <p>{{ product.description }}</p>
+          </div>
+
+          <div class="price-card" [class.discounted]="hasDiscount(product)">
+            <span>Price</span>
+            <div class="price-row">
+              <strong>{{ product.price.current }} {{ product.price.currency }}</strong>
+
+              @if (hasDiscount(product)) {
+                <del>{{ product.price.beforeDiscount }} {{ product.price.currency }}</del>
+              }
+            </div>
+
+          </div>
+
+          <div class="status-row">
+            @if (product.stock > 0) {
+              <span class="stock in-stock">{{ product.stock }} მარაგშია</span>
+            } @else {
+              <span class="stock out-stock">არ არის მარაგში</span>
+            }
+          </div>
+
+          <div class="details-grid">
+            <div>
+              <span>ბრენდი</span>
+              <strong>{{ product.brand }}</strong>
+            </div>
+
+            <div>
+              <span>გარანტია</span>
+              <strong>{{ product.warranty }} წელი</strong>
+            </div>
+
+            <div>
+              <span>გამოშვების თარიღი</span>
+              <strong>{{ formatDate(product.issueDate) }}</strong>
+            </div>
+          </div>
+
+          <button class="cart-button" type="button" (click)="addToCart()" [disabled]="product.stock === 0">
+           კალათში დამატება
+          </button>
+        </div>
+      </article>
+
+      
+    } @else {
+      <div class="loading-state">
+        <span>Loading product details...</span>
+      </div>
+    }
+  </div>
+</section>

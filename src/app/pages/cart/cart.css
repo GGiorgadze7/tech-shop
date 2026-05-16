@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   padding: 42px 18px 60px;
+  margin-bottom: 180px;
 }
 
 .wrapper {
@@ -33,6 +34,7 @@
   gap: 18px;
   align-items: center;
   padding: 18px;
+  position: relative;
 }
 
 .cart-item .img-div {
@@ -74,6 +76,47 @@
   color: #0f172a;
   font-weight: 600;
 }
+
+.cart-item .item-title {
+  font-size: 21px;
+}
+
+.cart-item .sum-price {
+  min-width: 200px;
+}
+
+.cart-item .deleteBtn {
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: red;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+   border-radius:5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+}
+
+.cart-item .deleteBtn button {
+  background-color: red;
+  border: none;
+  cursor: pointer;
+}
+
+.checkoutBtn {
+  padding: 7px;
+  border-radius: 7px;
+  border: none;
+  background-color: green;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
 
 @media (max-width: 760px) {
   .cart-item {

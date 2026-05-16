@@ -1,12 +1,17 @@
 <div class="card">
-  <div class="img-div">
+  <div class="img-div" [routerLink]="['/product', product._id]">
     <img [src]="product.thumbnail" alt="" />
+
+     <div class="details-div">
+      <p>დეტალურად</p>
+    </div>
+
   </div>
 
   <div class="card-description">
     <h2 class="prd-title">{{ product.title }}</h2>
 
-    <p>მარაგშია: {{product.stock}}</p>
+    <p>მარაგშია: {{ product.stock }}</p>
 
     <p>{{ product.warranty }} წლიანი გარანტია</p>
 
@@ -16,25 +21,27 @@
       @if (product.price.beforeDiscount !== product.price.current) {
         <p class="discount-price">{{ product.price.beforeDiscount | currency }}</p>
       }
-
-    
     </div>
 
     <p class="rating">🌟{{ product.rating }}</p>
 
     <div class="add-button">
-      <button type="button" [disabled]="product.stock === 0" class="add-buton" (click)="addToCart()">
+      <button
+        type="button"
+        [disabled]="product.stock === 0"
+        class="add-buton"
+        (click)="addToCart()"
+      >
         <img src="svg/cart-plus-solid.svg" />კალათში დამატება
-
-        
       </button>
     </div>
   </div>
 
-  
-     @if (product.price.discountPercentage > 0) {
-      <span class="discount">-{{ product.price.discountPercentage }}%</span>
-    }
-    
-  
+  @if (product.price.discountPercentage > 0) {
+    <span class="discount">-{{ product.price.discountPercentage }}%</span>
+  }
+
+ 
+
+
 </div>

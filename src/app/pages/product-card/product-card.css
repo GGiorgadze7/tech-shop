@@ -1,7 +1,16 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .card {
   width: 100%;
+  height: 100%;
   max-width: 340px;
-  min-height: 470px;
+  min-height: 530px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -22,21 +31,26 @@
 .img-div {
   width: 100%;
   min-height: 230px;
+  height: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f8fafc;
   padding: 18px;
+  position: relative;
+  backdrop-filter: blur(5px);
+
 }
 
 .card img {
-  max-width: 100%;
+  max-width: 90%;
   max-height: 220px;
   object-fit: contain;
 }
 
 .card-description {
   width: 100%;
+  height: 60%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -86,28 +100,33 @@
 }
 
 .add-button button {
-  width: 100%;
   display: flex;
-  justify-content: center;
+  gap: 6px;
   align-items: center;
-  gap: 0.6rem;
-  padding: 14px 16px;
-  border-radius: 12px;
+  width: 50%; 
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px 20px;
   border: none;
-  background: #2563eb;
-  color: #ffffff;
-  font-weight: 600;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-  opacity: 1;
-  visibility: visible;
-  transform: none;
+  border-radius: 10px;
+  background: #4a6cf7;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.add-button button:hover:not(:disabled) {
-  background: #1d4ed8;
-  transform: translateY(-1px);
+.add-button img {
+  width: 20px;
+}
+
+.card:hover .add-button button {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .add-button button:disabled {
@@ -127,6 +146,42 @@
   font-weight: 700;
 }
 
+
+.details-div {
+   position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0px);
+  
+  opacity: 0;
+  visibility: hidden;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4a6cf7;
+  color: white;
+  cursor: pointer;
+
+  transition: all 0.2s; 
+  z-index: 999;
+  
+}
+
+.img-div:hover .details-div {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  
+}
+
+.img-div:hover {
+  cursor: pointer;
+  transition: all 0.5s;
+  backdrop-filter: blur(5px);
+
+}
+
 @media (max-width: 480px) {
   .card {
     max-width: 100%;
@@ -142,5 +197,5 @@
 
   .add-button button {
     padding: 12px 14px;
-  }
+  } 
 }

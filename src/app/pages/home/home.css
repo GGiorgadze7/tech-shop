@@ -16,7 +16,7 @@
 
 .products {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
@@ -43,6 +43,7 @@
   transition:
     transform 0.2s ease,
     background 0.2s ease;
+    cursor: pointer;
 }
 
 .np-btn button:hover:not(:disabled) {
