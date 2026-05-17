@@ -5,63 +5,63 @@ import { guestGuard } from './services/guards/guest-guard';
 import { authGuard } from './services/guards/auth-guard';
 
 export const routes: Routes = [
-  { path: '', component: Home, title: 'Tech Shop' },
+  { path: '', component: Home, title: 'TechSpace' },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
-    title: 'About',
+    title: 'TechSpace',
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
-    title: 'contact',
+    title: 'TechSpace',
   },
 
   {
     path: 'user',
     loadComponent: () => import('./pages/auth/user/user').then((m) => m.User),
-    title: 'user',
+    title: 'TechSpace',
     canActivate: [authGuard],
   },
 
   {
     path: 'signin',
     loadComponent: () => import('./pages/auth/signin/signin').then((m) => m.Signin),
-    title: 'signin',
+    title: 'TechSpace',
     canActivate: [guestGuard],
   },
 
   {
     path: 'signup',
     loadComponent: () => import('./pages/auth/signup/signup').then((m) => m.Signup),
-    title: 'signup',
+    title: 'TechSpace',
     canActivate: [guestGuard],
   },
 
   {
     path: 'cart',
     loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
-    title: 'cart',
+    title: 'TechSpace ',
   },
 
   {
     path: 'product/:id',
     loadComponent: () =>
       import('./pages/product-details/product-details').then((m) => m.ProductDetails),
-    title: 'product-details',
+    title: 'TechSpace',
   },
 
   {
     path: 'passrecover',
     loadComponent: () => import('./pages/auth/passrecover/passrecover').then((m) => m.Passrecover),
-    title: 'emailrecovery',
+    title: 'TechSpace',
   },
 
   {
     path: 'passrecover2',
     loadComponent: () =>
       import('./pages/auth/passrecover2/passrecover2').then((m) => m.Passrecover2),
-    title: 'passrecovery',
+    title: 'TechSpace',
   },
 
   { path: '**', component: Page404, title: 'You Have Lost' },

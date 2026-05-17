@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- მინიმალისტური იქონი - ექვსკუთხედი -->
+  <polygon points="20,10 40,10 50,27.5 40,45 20,45 10,27.5" fill="#2563EB" />
+  <!-- ასო T შუაში -->
+  <text x="30" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">T</text>
+</svg>

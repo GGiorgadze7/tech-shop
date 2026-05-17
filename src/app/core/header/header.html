@@ -1,5 +1,5 @@
 <header>
-  <img class="logo-img" src="/svg/gemini-svg.svg" alt="logo" routerLink="/">
+  <img class="logo-img" src="/svg/gemini-svg.svg" alt="logo" routerLink="/" />
   <div class="nav-div">
     <nav>
       <ul>
@@ -14,38 +14,41 @@
     </nav>
   </div>
 
-  <img src="/svg/bars-solid.svg" (click)="menuToggle()" />
-
-   
-
   <div class="burger-menu" [class.appear-menu]="AppearMenu">
     <div class="burger-list">
       <ul>
         <li>
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-           (click)="menuToggle()" >მთავარი</a
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="menuToggle()"
+            >მთავარი</a
           >
         </li>
-        <li><a routerLink="/about" routerLinkActive="active" (click)="menuToggle()" >ჩვენს შესახებ</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()" >კონტაქტი</a></li>
+        <li>
+          <a routerLink="/about" routerLinkActive="active" (click)="menuToggle()">ჩვენს შესახებ</a>
+        </li>
+        <li>
+          <a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()">კონტაქტი</a>
+        </li>
 
-        <li><a routerLink="/signin" routerLinkActive="active" (click)="menuToggle()">Signin</a></li>
-      
+        <!-- <li><a routerLink="/signin" routerLinkActive="active" (click)="menuToggle()">Signin</a></li> -->
       </ul>
     </div>
   </div>
 
-   <div class="btns"> 
+  <div class="btns">
     <button class="user-img" routerLink="/cart">
-        <img src="svg/cart-arrow-down-solid.svg" alt="">
-       </button>
+      <img src="svg/cart-arrow-down-solid.svg" alt="" />
+    </button>
 
-     <button routerLink="/signin" class="user-img">
-        <img src="svg/user-solid.svg" alt="user">
-       </button>
+    <button routerLink="/signin" class="user-img">
+      <img src="svg/user-solid.svg" alt="user" />
+    </button>
+  </div>
 
-       
-   </div>
   
-
 </header>
+
+<img class="burger-bars" src="/svg/bars-solid.svg" (click)="menuToggle()" />

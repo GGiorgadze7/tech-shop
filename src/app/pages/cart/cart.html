@@ -1,39 +1,193 @@
-  <div class="wrapper">
-    <h1 class="title">თქვენი კალათა:</h1>
-    <div class="product-cart">
-      @if (cartProducts().length > 0) {
-        @for (item of cartProducts(); track item._id) {
-          <div class="cart-item">
-            <div class="img-div">
-              <img [src]="item.thumbnail" alt="" />
-            </div>
-
-            <p class="item-title">{{ item.title }}</p>
-            <p>რაოდენობა: {{ item.quantity }}</p>
-            <p>ერთის ფასი: {{ item.pricePerQuantity |currency}}</p>
-            <p class="sum-price">სულ: {{ item.pricePerQuantity * item.quantity | currency }}</p>
-
-            <div class="deleteBtn">
-              <button (click)="removeProduct(item.productId, item.quantity)">X</button>
-            </div>
+<div class="wrapper">
+  <h1 class="title">თქვენი კალათა:</h1>
+  <div class="product-cart">
+    @if (cartProducts().length > 0) {
+      @for (item of cartProducts(); track item._id) {
+        <div class="cart-item">
+          <div class="img-div">
+            <img [src]="item.thumbnail" alt="" />
           </div>
-        }
 
-        @if (cartData()) {
-          <div class="cart-total">
-            <p>სულ პროდუქტი: {{ cartData().total.products }}</p>
-            <p>სულ ფასი: {{ cartData().total.price.current | currency }}</p>
+          <p class="item-title">{{ item.title }}</p>
+          <p>ერთის ფასი: {{ item.pricePerQuantity | currency }}</p>
+          <p class="sum-price">სულ: {{ item.pricePerQuantity * item.quantity | currency }}</p>
 
-            <button class="checkoutBtn" (click)="checkout()">შეკვეთა</button>
-
+          <div class="quantity-controls">
+            <button
+              [disabled]="item.quantity === 1"
+              (click)="updateQuantity(item.productId, item.quantity - 1)"
+            >
+              -
+            </button>
+            <span>{{ item.quantity }}</span>
+            <button (click)="updateQuantity(item.productId, item.quantity + 1)">+</button>
           </div>
-        }
-      } @else {
-        
-        <div class="empty-card">
-          <h2>კალათა ცარიელია</h2>
-          
+
+          <div class="deleteBtn">
+            <button (click)="deleteProduct(item.productId)">
+              <img src="/svg/trash-can-regular (1).svg" alt="" />
+            </button>
+          </div>
         </div>
       }
-    </div>
+
+      @if (cartData()) {
+        <div class="cart-total">
+          <p>სულ პროდუქტი: {{ cartData().total.products }}</p>
+          <p>სულ ფასი: {{ cartData().total.price.current | currency }}</p>
+
+          <button class="checkoutBtn" (click)="checkout()">შეკვეთა</button>
+        </div>
+      }
+    } @else {
+      <div class="empty-card">
+        <h2>კალათა ცარიელია</h2>
+      </div>
+    }
+
+    @if (showCheckoutForm()) {
+      <div class="modal-overlay" (click)="showCheckoutForm.set(false)">
+        <div class="modal" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h2>შეკვეთის გაფორმება</h2>
+            <button class="close-btn" (click)="showCheckoutForm.set(false)">✕</button>
+          </div>
+
+          <form #checkoutForm="ngForm" (ngSubmit)="confirmOrder()">
+            <div class="form-group">
+              <label for="name">ბარათის მფლობელის სახელი</label>
+              <div class="input-wrap">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="10" cy="6" r="3" />
+                  <path d="M3 18c0-4 3.1-7 7-7s7 3 7 7" />
+                </svg>
+                <input
+                  #name
+                  id="name"
+                  type="text"
+                  placeholder="სახელი-გვარი"
+                  [(ngModel)]="cheCkoutData.CardName"
+                  name="fullName"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="card">ბარათის ნომერი</label>
+              <div class="input-wrap">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 4a1 1 0 011-1h2.5a1 1 0 011 .75l.75 3a1 1 0 01-.29.95l-1.2 1.2a11 11 0 004.3 4.3l1.2-1.2a1 1 0 01.95-.29l3 .75a1 1 0 01.75 1V16a1 1 0 01-1 1C7.16 17 3 12.84 3 4z"
+                  />
+                </svg>
+                <input
+                  #card
+                  name="card"
+                  id="card"
+                  type="number"
+                  [(ngModel)]="cheCkoutData.CardNumber"
+                  placeholder="XXXX XXXX XXXX XXXX"
+                  maxlength="16"
+                  required
+                />
+              </div>
+
+              @if (cheCkoutData.CardNumber.toString().length < 16) {
+                <p class="error-msg">ბარათის ნომერი უნდა იყოს 16 ციფრი</p>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="email">ელ. ფოსტა</label>
+              <div class="input-wrap">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="4" width="16" height="12" rx="2" />
+                  <path d="M2 7l8 5 8-5" />
+                </svg>
+                <input
+                  #email
+                  id="email"
+                  type="email"
+                  placeholder="example@gmail.com"
+                  email
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">მისამართი</label>
+              <div class="input-wrap">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M10 2C6.13 2 3 5.13 3 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="10" cy="9" r="2.5" />
+                </svg>
+                <input #address id="address" type="text" placeholder="თბილისი, რუსთაველის 1" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="note">დამატებითი ინფო</label>
+              <div class="input-wrap textarea-wrap">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 6h12M4 10h8M4 14h5" />
+                </svg>
+                <textarea #note id="note" placeholder="სადარბაზო, სართული, შენიშვნა..."></textarea>
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button class="cancel-btn" (click)="showCheckoutForm.set(false)">გაუქმება</button>
+              <button
+                class="confirm-btn"
+                [disabled]="checkoutForm.invalid || cheCkoutData.CardNumber.toString().length < 16"
+
+                (click)="confirmOrder()"
+              >
+                დადასტურება ✓
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
   </div>
+</div>

@@ -2,18 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Component, signal, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { NotificationService } from '../../services/notification.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, FormsModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
 export class Cart {
   cartData = signal<any>(null);
   cartProducts = signal<any[]>([]);
+  showCheckoutForm = signal(false);
 
   private http = inject(HttpClient);
   private notification = inject(NotificationService);
+
+  cheCkoutData = {
+    CardName: '',
+    CardNumber: '',
+    cvv: '',
+    expireData: '',
+  };
+
+
+ 
+
+
 
   ngOnInit() {
     this.getCart();
@@ -63,57 +77,88 @@ export class Cart {
     });
   }
 
-  removeProduct(productId: string, currentQuantity: number) {
+  updateQuantity(productId: string, newQuantity: number) {
     const token = localStorage.getItem('access_token');
 
-    if (currentQuantity > 1) {
-      this.http
-        .patch(
-          'https://api.everrest.educata.dev/shop/cart/product',
-          { id: productId, quantity: currentQuantity - 1 },
-          { headers: { Authorization: `Bearer ${token}` } },
-        )
-        .subscribe({
-          next: () => {
-            this.cartProducts.set([]);
-            this.notification.success('რაოდენობა შემცირდა');
-            this.getCart();
-          },
-          error: () => this.notification.error('შეცდომა!'),
-        });
-    } else {
-      this.http
-        .delete('https://api.everrest.educata.dev/shop/cart/product', {
-          headers: { Authorization: `Bearer ${token}` },
-          body: { id: productId },
-        })
-        .subscribe({
-          next: () => {
-            this.cartProducts.set([]);
-            this.notification.success('პროდუქტი წაიშალა');
-            this.getCart();
-          },
-          error: () => this.notification.error('პროდუქტი ვერ წაიშალა!'),
-        });
+    if (newQuantity < 1) {
+      this.deleteProduct(productId);
+      return;
     }
+
+    this.http
+      .patch(
+        'https://api.everrest.educata.dev/shop/cart/product',
+        { id: productId, quantity: newQuantity },
+        { headers: { Authorization: `Bearer ${token}` } },
+      )
+      .subscribe({
+        next: () => {
+          this.cartProducts.set([]);
+          this.getCart();
+        },
+        error: () => this.notification.error('შეცდომა!'),
+      });
+  }
+
+  deleteProduct(productId: string) {
+    const token = localStorage.getItem('access_token');
+    this.http
+      .delete('https://api.everrest.educata.dev/shop/cart/product', {
+        headers: { Authorization: `Bearer ${token}` },
+        body: { id: productId },
+      })
+      .subscribe({
+        next: () => {
+          this.cartProducts.set([]);
+          this.notification.success('პროდუქტი წაიშალა');
+          this.getCart();
+        },
+        error: () => this.notification.error('პროდუქტი ვერ წაიშალა!'),
+      });
+  }
+
+  clearCart() {
+    const token = localStorage.getItem('access_token');
+    this.http
+      .delete('https://api.everrest.educata.dev/shop/cart', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .subscribe({
+        next: () => {
+          this.cartProducts.set([]);
+          this.cartData.set(null);
+          this.notification.success('კალათა გასუფთავდა');
+        },
+        error: () => this.notification.error('კალათა ვერ გასუფთავდა!'),
+      });
   }
 
   checkout() {
+    this.showCheckoutForm.set(true);
+  }
+
+  confirmOrder() {
     const token = localStorage.getItem('access_token');
+
+    if(this.cheCkoutData.CardNumber.length < 16) {
+      this.notification.error('ბარათის მონაცემები არასწორია')
+      return
+    }
+
+
 
     this.http
       .post(
         'https://api.everrest.educata.dev/shop/cart/checkout',
         {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
+        { headers: { Authorization: `Bearer ${token}` } },
       )
       .subscribe({
         next: () => {
           this.cartProducts.set([]);
           this.cartData.set(null);
-          this.notification.success('შეკვეთა წარმატებით განხორციელდა');
+          this.showCheckoutForm.set(false);
+          this.notification.success('შეკვეთა წარმატებით გაფორმდა!');
         },
         error: () => this.notification.error('მოხდა შეცდომა'),
       });
