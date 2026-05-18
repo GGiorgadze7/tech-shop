@@ -1,27 +1,16 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :host {
-    width: 100%;
-}
-
-
-:root {
-  --blue: #178CF2;
-  --blue-light: #E6F1FB;
-  --text: #111;
-  --text-muted: #666;
-  --border: #e8e8e8;
-  --bg: #fafafa;
-  --white: #fff;
-  --radius: 12px;
+  width: 100%;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   color: var(--text);
   background: var(--bg);
@@ -40,7 +29,7 @@ a {
 }
 
 .hero-label {
-  font-family: 'DM Mono', monospace;
+  
   font-size: 12px;
   color: var(--blue);
   letter-spacing: 1px;
@@ -150,15 +139,17 @@ a {
 }
 
 .visual-card {
-  background: var(--bg);
+  background: white;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .visual-card:hover {
@@ -202,11 +193,13 @@ a {
 }
 
 .value-card {
-  background: var(--white);
+  background: white;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 1.5rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .value-card:hover {
@@ -243,47 +236,25 @@ a {
   line-height: 1.6;
 }
 
-
 .contact-section {
   padding: 4rem 0;
   text-align: center;
 }
 
-.contact-sub {
-  color: var(--text-muted);
-  max-width: 400px;
-  margin: 0 auto 2rem;
+.contact-section button {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #178cf2;
+  border: none;
+  color: white;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
-.contact-chips {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.contact-section button:hover {
+  background-color: blue;
+  scale: 1.08;
 }
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text);
-  background: var(--white);
-  transition: border-color 0.15s, transform 0.15s;
-}
-
-.chip svg {
-  stroke: var(--blue);
-}
-
-.chip:hover {
-  border-color: var(--blue);
-  transform: translateY(-1px);
-}
-
 
 @media (max-width: 768px) {
   .about-grid {

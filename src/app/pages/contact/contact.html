@@ -1,1 +1,101 @@
-<p>contact works!</p>
+<div class="contact-page">
+  <!-- Header Section -->
+  <div class="contact-header">
+    <h1>დაგვიკავშირდით</h1>
+    <p>გაქვთ კითხვები ჩვენს პროდუქციასთან დაკავშირებით? მოგვწერეთ ან დაგვირეკეთ.</p>
+  </div>
+
+  <div class="contact-container">
+    
+    <!-- Left Side: Contact Info -->
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="icon-wrap">📍</div>
+        <div class="info-text">
+          <h3>მისამართი</h3>
+          <p>თბილისი, საქართველო<br>თავისუფლების მოედანი 1</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="icon-wrap">📞</div>
+        <div class="info-text">
+          <h3>ტელეფონი</h3>
+          <p>+995 32 2 00 00 00<br>+995 599 00 00 00</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="icon-wrap">✉️</div>
+        <div class="info-text">
+          <h3>ელ. ფოსტა</h3>
+          <p>info:TechSpace@gmail.com<br>support:@TechSpace.com</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="icon-wrap">🕒</div>
+        <div class="info-text">
+          <h3>სამუშაო საათები</h3>
+          <p>ორშ - პარ: 10:00 - 19:00<br>შაბათი: 11:00 - 16:00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h2>მოგვწერეთ შეტყობინება</h2>
+      
+      @if (successMessage) {
+        <div class="success-alert">
+          ✓ თქვენი შეტყობინება წარმატებით გაიგზავნა! ჩვენ მალე დაგიკავშირდებით.
+        </div>
+      }
+
+      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>სახელი *</label>
+            <div class="input-wrap" [class.invalid]="name.invalid && name.touched">
+              <input type="text" name="name" [(ngModel)]="contactData.name" #name="ngModel" required minlength="2" placeholder="თქვენი სახელი">
+            </div>
+            @if (name.invalid && name.touched) {
+              <span class="error-msg">სახელი სავალდებულოა</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>ელ. ფოსტა *</label>
+            <div class="input-wrap" [class.invalid]="email.invalid && email.touched">
+              <input type="email" name="email" [(ngModel)]="contactData.email" #email="ngModel" required email placeholder="თქვენი ელ. ფოსტა">
+            </div>
+            @if (email.invalid && email.touched) {
+              <span class="error-msg">მიუთითეთ ვალიდური ელ. ფოსტა</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>თემა</label>
+          <div class="input-wrap">
+            <input type="text" name="subject" [(ngModel)]="contactData.subject" placeholder="რას ეხება თქვენი კითხვა?">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>შეტყობინება *</label>
+          <div class="input-wrap textarea-wrap" [class.invalid]="message.invalid && message.touched">
+            <textarea name="message" [(ngModel)]="contactData.message" #message="ngModel" required minlength="10" rows="5" placeholder="დაწერეთ თქვენი შეტყობინება აქ..."></textarea>
+          </div>
+          @if (message.invalid && message.touched) {
+            <span class="error-msg">შეტყობინება უნდა შეიცავდეს მინიმუმ 10 სიმბოლოს</span>
+          }
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="contactForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'იგზავნება...' : 'გაგზავნა ' }}
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>

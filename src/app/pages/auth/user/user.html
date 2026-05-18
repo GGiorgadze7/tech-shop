@@ -1,49 +1,157 @@
 <div class="user-profile">
-  <h2 class="title">მომხმარებლის პროფილი</h2>
-
-
 
   @if (userData()) {
 
-    <div class="avatar-div">
+    <div class="profile-card">
+      <div class="profile-banner"></div>
+      <div class="profile-body">
+        <div class="profile-avatar-row">
+          <img
+            class="profile-avatar"
+            [src]="userData().gender === 'FEMALE' ? '/svg/female-avatar1.png' : '/svg/male-avatar1.png'"
+            alt=""
+          />
+          <button class="edit-btn" (click)="showEditForm.set(true)">პროფილის რედაქტირება</button>
+        </div>
 
-      <div class="name-div">
-      @if (userData().gender === "FEMALE") {
-      <img src="/svg/female-avatar1.png" alt="">
-    } @else if (userData().gender === "MALE") {
-      <img src="/svg/male-avatar1.png" alt="">
-    }
+        <p class="profile-name">{{ userData().firstName }} {{ userData().lastName }}</p>
+        <p class="profile-email">{{ userData().email }}</p>
 
-    
-      <div class="fl-name-div">
-         <h1>{{userData().firstName}}</h1>
-      <h1>{{userData().lastName}}</h1>
+        @if (userData().verified) {
+          <span class="verify-badge">✓ ვერიფიცირებულია</span>
+        } @else {
+          <span class="unverify-badge">✕ არ არის ვერიფიცირებული</span>
+        }
       </div>
     </div>
 
-    <div class="email-div">
-      <h1>ემაილი:</h1>
-      <h2>{{userData().email}}</h2>
+    <div class="info-card">
+      <p class="info-card-title">დეტალური ინფო</p>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">ასაკი</span>
+          <span class="info-value">{{ userData().age || '—' }}</span>
+         
+
+        </div>
+        <div class="info-item">
+          <span class="info-label">სქესი</span>
+          <span class="info-value">{{ userData().gender === 'MALE' ? 'მამრობითი' : 'მდედრობითი' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">ტელეფონი</span>
+          <span class="info-value">{{ userData().phone || '—' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">მისამართი</span>
+          <span class="info-value">{{ userData().address || '—' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">საფოსტო ინდექსი</span>
+          <span class="info-value">{{ userData().zipcode || '—' }}</span>
+        </div>
+      </div>
     </div>
 
-    @if (userData().verified === true) {
-      <h1 class="verify">ვერიფიკაცირებულია</h1>
-    } @else {
-      <h1>არ არის ვერიფიცირებული!</h1>
-    }
-
-
-
-     <span><a routerLink="/passrecover2">პაროლის შეცვლა</a> </span>
-
+    <div class="actions-card">
+      <a class="pass-link" routerLink="/passrecover2"> პაროლის შეცვლა</a>
+      <button class="logout-btn" (click)="logout()">გასვლა</button>
     </div>
-    
-
 
   } @else {
     <p class="verify-alert">გაიარეთ ვერიფიკაცია თქვენი ინფორმაციის სანახავად!</p>
+    <button class="unferify-logout"  (click)="logout()" >გასვლა</button>
   }
 
-  
-  <button class="logout-btn" (click)="logout()">გასვლა</button>
 </div>
+
+@if (showEditForm()) {
+  <div class="modal-overlay" (click)="showEditForm.set(false)">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>პროფილის რედაქტირება</h2>
+        <button class="close-btn" (click)="showEditForm.set(false)">✕</button>
+      </div>
+
+      <form #editForm="ngForm" (ngSubmit)="updateUser()">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>სახელი</label>
+            <div class="input-wrap" [class.invalid]="firstName.invalid && firstName.touched">
+              <input type="text" [(ngModel)]="updateData.firstName" name="firstName" #firstName="ngModel" required minlength="2" placeholder="სახელი" />
+            </div>
+            @if (firstName.invalid && firstName.touched) {
+              <p class="error-msg">სახელი სავალდებულოა</p>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>გვარი</label>
+            <div class="input-wrap" [class.invalid]="lastName.invalid && lastName.touched">
+              <input type="text" [(ngModel)]="updateData.lastName" name="lastName" #lastName="ngModel" required minlength="2" placeholder="გვარი" />
+            </div>
+            @if (lastName.invalid && lastName.touched) {
+              <p class="error-msg">გვარი სავალდებულოა</p>
+            }
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>ასაკი</label>
+            <div class="input-wrap">
+              <input type="number" [(ngModel)]="updateData.age" name="age" min="18" max="120" placeholder="ასაკი" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>სქესი</label>
+            <div class="input-wrap">
+              <select [(ngModel)]="updateData.gender" name="gender">
+                <option value="MALE">მამრობითი</option>
+                <option value="FEMALE">მდედრობითი</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ტელეფონი</label>
+          <div class="input-wrap">
+            <input type="tel" [(ngModel)]="updateData.phone" name="phone" placeholder="+995 5XX XXX XXX" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>მისამართი</label>
+          <div class="input-wrap">
+            <input type="text" [(ngModel)]="updateData.address" name="address" placeholder="თბილისი, რუსთაველის 1" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>საფოსტო ინდექსი</label>
+            <div class="input-wrap">
+              <input type="text" [(ngModel)]="updateData.zipcode" name="zipcode" placeholder="0179" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>ავატარი (URL)</label>
+            <div class="input-wrap">
+              <input type="text" [(ngModel)]="updateData.avatar" name="avatar" placeholder="https://..." />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" (click)="showEditForm.set(false)">გაუქმება</button>
+          <button type="submit" class="confirm-btn" [disabled]="editForm.invalid">შენახვა ✓</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+}

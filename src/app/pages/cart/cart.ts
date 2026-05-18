@@ -21,13 +21,8 @@ export class Cart {
     CardName: '',
     CardNumber: '',
     cvv: '',
-    expireData: '',
+    expireDate: '',
   };
-
-
- 
-
-
 
   ngOnInit() {
     this.getCart();
@@ -138,14 +133,12 @@ export class Cart {
   }
 
   confirmOrder() {
-    const token = localStorage.getItem('access_token');
-
-    if(this.cheCkoutData.CardNumber.length < 16) {
-      this.notification.error('ბარათის მონაცემები არასწორია')
-      return
+    if (this.cheCkoutData.CardNumber.length < 16) {
+      this.notification.error('ბარათის მონაცემები არასწორია');
+      return;
     }
 
-
+    const token = localStorage.getItem('access_token');
 
     this.http
       .post(
