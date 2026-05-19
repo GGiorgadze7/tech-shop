@@ -56,7 +56,6 @@ nav a:hover {
 
 .active {
   color: #8b5cf6 !important;
-  
 }
 
 nav a:hover::after {
@@ -133,8 +132,7 @@ header img {
   gap: 15px;
 }
 
-
-.burger-bars  {
+.burger-bars {
   position: absolute;
   display: none;
   width: 40px;
@@ -155,14 +153,71 @@ header img {
     display: none;
   }
 
-  .btns{
+  .btns {
     padding-right: 5%;
-    gap: 1px  ;
+    gap: 1px;
   }
 
   .burger-bars {
     display: block;
   }
 
+  .burger-menu {
+    width: 60%;
+  }
 
+  .burger-list ul {
+    gap: 24px;
+  }
+
+  .burger-list ul a {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 0 12px;
+    height: 7vh;
+  }
+
+  .logo-img {
+    width: 140px !important;
+  }
+
+  .logo-img img {
+    width: 140px !important;
+  }
+
+  .burger-menu {
+    width: 75%;
+  }
+
+  .user-img {
+    width: 34px;
+  }
+
+  .user-img img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .burger-bars {
+    width: 32px;
+    top: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-img {
+    width: 110px !important;
+  }
+
+  .logo-img img {
+    width: 110px !important;
+  }
+
+  .burger-menu {
+    width: 85%;
+  }
 }

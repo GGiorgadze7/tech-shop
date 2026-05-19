@@ -11,6 +11,7 @@ import { NotificationService } from '../../../services/notification.service';
   styleUrl: './signup.css',
 })
 export class Signup {
+
   signupData = {
     firstName: '',
     lastName: '',
@@ -19,7 +20,7 @@ export class Signup {
     password: '',
     address: '',
     phone: '+995577109337',
-    zipcode: '0101',
+    zipcode: '',
     avatar: 'https://linkedin.com',
     gender: 'MALE',
   };

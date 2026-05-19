@@ -1,109 +1,147 @@
 :host {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    height: 100%;
-    padding: 30px;
-    margin-bottom: 190px;
-    border-radius: 10px;
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
-    transition: all 0.3s;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  min-height: 600px;
+  height: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+  transition: all 0.3s;
 }
 
 .wrapper:hover {
-     box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
-     scale: 1.03;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
+  scale: 1.02;
 }
 
-.wrapper .title  {
-    font-size: 25px;
+.wrapper .title {
+  font-size: 25px;
 }
 
 .passrecover {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 45%;
 }
 
 .passrecover form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 }
 
 label {
-    align-self: flex-start;
-    padding-left: 5px;
+  align-self: flex-start;
+  padding-left: 5px;
 }
 
 .passrecover form input {
-    padding: 10px;
-    width: 100%;
-    border-radius: 10px;
-    border: 0.3px solid rgb(129, 129, 129);
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: 0.3px solid rgb(129, 129, 129);
+  transition: all 0.3s;
+  outline: none;
+}
+
+.passrecover form input:focus {
+    border: 1px solid rgb(103, 103, 233);
 }
 
 .passrecover form button {
-    padding: 10px;
-    width: 50%;
-    border-radius: 10px;
-    border: none;
-    background-color: blue;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
+  padding: 10px;
+  width: 50%;
+  border-radius: 10px;
+  border: none;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .passrecover form button:hover {
-    scale: 1.07;
+  scale: 1.07;
 }
 .passrecover form button:disabled {
-    cursor: not-allowed;
-    background-color: gray;
-    scale: 1;
+  cursor: not-allowed;
+  background-color: gray;
+  scale: 1;
 }
 
 .label-div {
-    display: flex;
-    align-items: center;
-    align-self: flex-start;
-    padding-left: 2px;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  padding-left: 2px;
 }
 
-.label-div img{
-    width: 18px;
+.label-div img {
+  width: 18px;
 }
-
 
 .success-message {
-    width: 100%;
+  width: 100%;
 }
 
 .error-message {
-    width: 100%;
-    color: red;
-
+  width: 100%;
+  color: red;
 }
 
 .title-span {
-    color: blue;
+  color: blue;
+}
+
+@media (max-width: 768px) {
+  :host {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .wrapper {
+    margin-bottom: 60px;
+    padding: 24px 20px;
+  }
+
+  .passrecover {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 20px 16px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+  }
+
+  .wrapper .title {
+    font-size: 20px;
+  }
+
+  .passrecover {
+    width: 100%;
+  }
+
+  .passrecover form button {
+    width: 70%;
+  }
 }

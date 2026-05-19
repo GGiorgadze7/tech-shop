@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Token } from '@angular/compiler';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { NotificationService } from '../../../services/notification.service';
+import { SignupData } from '../../../shared/models/auth.model';
 
 @Component({
   selector: 'app-passrecover2',
@@ -19,7 +20,7 @@ export class Passrecover2 {
 
   private http = inject(HttpClient);
   private router = inject(Router);
-
+  private notification = inject(NotificationService);
 
   changePass() {
     const token = localStorage.getItem('access_token');
@@ -35,14 +36,13 @@ export class Passrecover2 {
           console.log(response);
           alert('პაროლი წარმატებით შეიცვალა!');
           this.router.navigateByUrl('/signin');
-
         },
 
         error: (error) => {
           console.error(error);
-          alert(
-            'პაროლის შეცვლა ვერ განხორციელდა. გთხოვთ, შეამოწმოთ თქვენი მონაცემები და სცადოთ თავიდან.',
-          );
+          if (this.changePassData.newPassword === this.changePassData.oldPassword) {
+            this.notification.error('პაროლები ემთხვევა ერთმანეთს');
+          }
         },
       });
   }

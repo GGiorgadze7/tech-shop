@@ -2,10 +2,9 @@
   <div class="img-div" [routerLink]="['/product', product._id]">
     <img [src]="product.thumbnail" alt="" />
 
-     <div class="details-div">
+    <div class="details-div">
       <p>დეტალურად</p>
     </div>
-
   </div>
 
   <div class="card-description">
@@ -40,8 +39,4 @@
   @if (product.price.discountPercentage > 0) {
     <span class="discount">-{{ product.price.discountPercentage }}%</span>
   }
-
- 
-
-
 </div>

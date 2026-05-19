@@ -2,27 +2,26 @@
   <span class="next-slide" (click)="appearSlider()"> > </span>
   <span class="prev-slide" (click)="appearSlider()"> < </span>
   <div class="first-slide" [class.active-slide]="AppearSlide">
-    <img src="/svg/275819.jpg" alt="" >
+    <img src="/svg/275819.jpg" alt="" />
     <div class="info-div">
-      <h1>Tech <span class="title-span">Space</span> </h1>
+      <h1>Tech <span class="title-span">Space</span></h1>
       <p>შეიძინე ყველაზე მაღალ ხარისხიანი ტექნიკა ყველაზე დაბალ ფასად!</p>
       <span>ლეპტოპები, ტელეფონები, საათები, გეიმინგ კომპიუტერები და სხვა.</span>
       <button><a href="#productsId">ჩვენი პროდუქტები</a></button>
     </div>
-    
   </div>
-  <div class="second-slide"[class.active-slide]="AppearSlide">
-    <img src="/svg/The_best_tech_and_desk_accessories_this_year.webp" alt="">
+  <div class="second-slide" [class.active-slide]="AppearSlide">
+    <img src="/svg/The_best_tech_and_desk_accessories_this_year.webp" alt="" />
     <div class="info-div">
       <h1>Tech <span class="title-span">Space</span></h1>
-      <p>მოიხიბლე ჩვენი პროდუქციით? გვეწვიეთ ჩვენს რომელიმე ფილიალში ან გამოიწერე ონლაინ და მიიღე შეკვეთა სულ რაღაც 1 დღეში.</p>
+      <p>
+        მოიხიბლე ჩვენი პროდუქციით? გვეწვიეთ ჩვენს რომელიმე ფილიალში ან გამოიწერე ონლაინ და მიიღე
+        შეკვეთა სულ რაღაც 1 დღეში.
+      </p>
       <button routerLink="/about">ჩვენს შესახებ</button>
     </div>
   </div>
- 
 </div>
-
-
 
 @if (!productsList()) {
   <div class="loading-div">
@@ -32,21 +31,51 @@
   <h1 class="title">ჩვენი პროდუქტები</h1>
 
   <div class="live-stock">
-     <div class="live-search">
-    <input
-      type="search"
-      placeholder="Search"
-      [ngModel]="liveSearchKeyword()"
-      (ngModelChange)="liveSearch($event)"
-    />
-  </div>
+    <div class="live-stock">
+      <div class="live-search">
+        <input
+          type="search"
+          placeholder="ძებნა"
+          [ngModel]="liveSearchKeyword()"
+          (ngModelChange)="liveSearch($event)"
+        />
+      </div>
 
-  <div class="all-stock">
-    <p>პროდუქტების რაოდენობა: {{productsList().total}}</p>
+      <div class="categories">
+        <button
+          class="cat-btn"
+          [class.active-cat]="selectedCategory() === ''"
+          (click)="selectCategory('')"
+        >
+          ყველა
+        </button>
+        @for (cat of categories(); track cat.id) {
+          <button
+            class="cat-btn"
+            [class.active-cat]="selectedCategory() === cat.id"
+            (click)="selectCategory(cat.id)"
+          >
+            <img [src]="cat.image" [alt]="cat.name" />
+            {{ cat.name }}
+          </button>
+        }
+      </div>
+
+      <div class="sort-wrap">
+        <select (change)="onSortChange($any($event.target).value)">
+          <option value="">დალაგება</option>
+          <option value="price-asc">ფასი: იაფიდან ძვირამდე</option>
+          <option value="price-desc">ფასი: ძვირიდან იაფამდე</option>
+          <option value="rating-asc">რეიტინგი: დაბლიდან მაღლამდე</option>
+          <option value="rating-desc">რეიტინგი: მაღლიდან დაბლამდე</option>
+        </select>
+      </div>
+
+      <div class="all-stock">
+        <p>პროდუქტების რაოდენობა: {{ productsList().total }}</p>
+      </div>
+    </div>
   </div>
-  </div>
- 
-  
 
   <div class="products" id="productsId">
     @if (productsList()) {
@@ -57,19 +86,16 @@
   </div>
 
   <div class="np-btn">
-        <button type="button" (click)="prevPage()" [disabled]="pageIndex() === 1">Prev</button>
+    <button type="button" (click)="prevPage()" [disabled]="pageIndex() === 1">Prev</button>
 
-        <span> {{ pageIndex() }} გვერდი</span>
+    <span> {{ pageIndex() }} გვერდი</span>
 
-        <button
-          type="button"
-          (click)="nextPage()"
-          [disabled]="pageIndex() * pageSize() >= productsList().total"
-        >
-          Next
-        </button>
-      </div>
-
-
-  
+    <button
+      type="button"
+      (click)="nextPage()"
+      [disabled]="pageIndex() * pageSize() >= productsList().total"
+    >
+      Next
+    </button>
+  </div>
 }

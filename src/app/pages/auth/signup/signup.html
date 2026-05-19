@@ -64,12 +64,17 @@
       @if (signupData.age < 18) {
         <p>მინიმალური ასაკი:18</p>
       }
-
     </div>
 
     <div class="gender-div flexColumn">
       <label for="gender">სქესი</label>
-      <select name="gender" id="gender" [(ngModel)]="signupData.gender" placeholder="მამრობითი" required>
+      <select
+        name="gender"
+        id="gender"
+        [(ngModel)]="signupData.gender"
+        placeholder="მამრობითი"
+        required
+      >
         <option value="MALE">მამრობითი</option>
         <option value="FEMALE">მდედრობითი</option>
       </select>
@@ -89,7 +94,6 @@
       />
     </div>
 
-    
     <div class="address-div flexColumn">
       <label for="address">მისამართი</label>
       <input
@@ -100,6 +104,20 @@
         [(ngModel)]="signupData.address"
         #addresssInp="ngModel"
         [class.invalid]="addresssInp.invalid && addresssInp.touched"
+        required
+      />
+    </div>
+
+    <div class="zipcode-div flexColumn">
+      <label for="zipcode">საფოსტო კოდი</label>
+      <input
+        type="number"
+        name="zipcode"
+        id="zipcode"
+        placeholder="0101"
+        [(ngModel)]="signupData.zipcode"
+        #zipcodeInp="ngModel"
+        [class.invalid]="zipcodeInp.invalid && zipcodeInp.touched"
         required
       />
     </div>
@@ -131,7 +149,7 @@
           required
         />
 
-        @if(signupData.password != confirmPassword) {
+        @if (signupData.password != confirmPassword) {
           <p class="invalid-pass">პაროლები არ ემთხვევა</p>
         }
 
@@ -139,17 +157,14 @@
           <p class="invalid-pass">პაროლი მოკლეა</p>
         }
 
-        @if (signupData.password && confirmPassword.length > 8) {
-
-        }
-
+        @if (signupData.password && confirmPassword.length > 8) {}
       </div>
     </div>
 
-    @if(errorMessage) {
-      <p>{{errorMessage}}</p>
+    @if (errorMessage) {
+      <p>{{ errorMessage }}</p>
     } @else {
-      <p>{{successMessage}}</p>
+      <p>{{ successMessage }}</p>
     }
 
     <div class="btn-div flexColumn">

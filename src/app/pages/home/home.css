@@ -7,7 +7,6 @@
   padding-bottom: 60px;
 }
 
-
 .title {
   font-size: clamp(2rem, 2.3vw, 2.5rem);
   font-weight: 800;
@@ -16,8 +15,8 @@
   text-align: center;
 }
 
- .products {
-  scroll-margin-top: 100px;
+.products {
+  scroll-margin-top: 170px;
   width: 100%;
   max-width: 1300px;
   display: grid;
@@ -46,7 +45,7 @@
   transition:
     transform 0.2s ease,
     background 0.2s ease;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .np-btn button:hover:not(:disabled) {
@@ -65,21 +64,28 @@
   font-weight: 600;
 }
 
-
 .main-div {
   display: flex;
   flex-direction: column;
 }
 
 .live-search {
- margin-top: 40px;
-margin-bottom: 30px;
+  width: 230px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .live-search input {
+  width: 100%;
   border-radius: 10px;
-  border: none;
+  border: 0.5px solid rgb(206, 205, 205);
   padding: 10px;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.live-search input:focus {
+  border: 1px solid #1d4ed8;
 }
 
 .live-stock {
@@ -89,35 +95,29 @@ margin-bottom: 30px;
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  
 }
 
 .slider {
   width: 100%;
-  max-height: 700px;
+  max-height: 750px;
   margin-bottom: 30px;
   position: relative;
 }
 
-
-
 .slider .first-slide {
   width: 100%;
-  height: 700px;
-  transform: translateX(0  );
+  height: 750px;
+  transform: translateX(0);
   top: 0;
   right: 0;
   position: relative;
-
-  
 }
 
 .slider .second-slide {
-   width: 100%;
-  height: 700px;
+  width: 100%;
+  height: 750px;
   top: 0;
   right: 0;
-  
   position: absolute;
 }
 
@@ -126,8 +126,6 @@ margin-bottom: 30px;
   position: absolute;
 }
 
-
-
 .slider img {
   width: 100%;
   height: 100%;
@@ -135,13 +133,11 @@ margin-bottom: 30px;
   position: relative;
 }
 
-
 .next-slide {
   position: absolute;
   color: white;
   right: 3%;
   top: 45%;
- 
   font-size: 35px;
   cursor: pointer;
   z-index: 999;
@@ -158,12 +154,12 @@ margin-bottom: 30px;
 }
 
 .first-slide .info-div {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 22%;
-    color: white;
-    left: 15%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 22%;
+  color: white;
+  left: 15%;
 }
 
 .first-slide .info-div h1 {
@@ -172,18 +168,15 @@ margin-bottom: 30px;
 
 .first-slide .info-div p {
   font-size: 20px;
-  margin: 10px 0   20px;
+  margin: 10px 0 20px;
   max-width: 450px;
-
 }
 
 .first-slide .info-div a {
   width: 40%;
   padding: 10px;
   color: white;
-  
 }
-
 
 .first-slide .info-div button {
   width: 40%;
@@ -201,27 +194,24 @@ margin-bottom: 30px;
   scale: 1.1;
 }
 
-
 .second-slide .info-div {
   position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 22%;
-    color: white;
-    left: 15%;
+  display: flex;
+  flex-direction: column;
+  top: 22%;
+  color: white;
+  left: 15%;
 }
 
 .second-slide .info-div h1 {
   font-size: 38px;
 }
 
-
 .second-slide .info-div p {
-   font-size: 20px;
-  margin: 10px 0   20px;
+  font-size: 20px;
+  margin: 10px 0 20px;
   max-width: 600px;
 }
-
 
 .second-slide .info-div button {
   width: 40%;
@@ -232,13 +222,231 @@ margin-bottom: 30px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  
 }
 
 .second-slide .info-div button:hover {
   scale: 1.1;
 }
 
-.first-slide .title-span, .second-slide .title-span {
+.first-slide .title-span,
+.second-slide .title-span {
   color: blue;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  background: white;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.cat-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.cat-btn:hover {
+  border-color: #178cf2;
+  color: #178cf2;
+}
+
+.cat-btn.active-cat {
+  background: #178cf2;
+  color: white;
+  border-color: #178cf2;
+}
+
+.sort-wrap select {
+  padding: 8px 14px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.sort-wrap select:focus {
+  border-color: #178cf2;
+}
+
+
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 0 16px;
+  }
+
+  .live-stock {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .slider .first-slide,
+  .slider .second-slide {
+    height: 500px;
+  }
+
+  .first-slide .info-div,
+  .second-slide .info-div {
+    top: 15%;
+    left: 8%;
+  }
+
+  .first-slide .info-div h1,
+  .second-slide .info-div h1 {
+    font-size: 30px;
+  }
+
+  .first-slide .info-div p,
+  .second-slide .info-div p {
+    font-size: 16px;
+    max-width: 350px;
+  }
+
+  .first-slide .info-div button,
+  .second-slide .info-div button {
+    width: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider .first-slide,
+  .slider .second-slide {
+    height: 400px;
+  }
+
+  .first-slide .info-div,
+  .second-slide .info-div {
+    top: 12%;
+    left: 6%;
+  }
+
+  .first-slide .info-div h1,
+  .second-slide .info-div h1 {
+    font-size: 24px;
+  }
+
+  .first-slide .info-div p,
+  .second-slide .info-div p {
+    font-size: 14px;
+    max-width: 280px;
+    margin: 8px 0 12px;
+  }
+
+  .first-slide .info-div span {
+    font-size: 12px;
+  }
+
+  .first-slide .info-div button,
+  .second-slide .info-div button {
+    width: 70%;
+    padding: 8px;
+  }
+
+  .live-stock {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .categories {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .cat-btn {
+    flex-shrink: 0;
+  }
+
+  .live-search input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .live-search {
+    width: 100%;
+  }
+
+  .sort-wrap {
+    width: 100%;
+  }
+
+  .sort-wrap select {
+    width: 100%;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    padding: 0 12px;
+  }
+
+  .np-btn button {
+    min-width: 80px;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider .first-slide,
+  .slider .second-slide {
+    height: 300px;
+  }
+
+  .first-slide .info-div,
+  .second-slide .info-div {
+    top: 10%;
+    left: 5%;
+  }
+
+  .first-slide .info-div h1,
+  .second-slide .info-div h1 {
+    font-size: 20px;
+  }
+
+  .first-slide .info-div p,
+  .second-slide .info-div p {
+    font-size: 12px;
+    max-width: 220px;
+  }
+
+  .first-slide .info-div span {
+    display: none;
+  }
+
+  .first-slide .info-div button,
+  .second-slide .info-div button {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
 }
