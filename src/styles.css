@@ -13,14 +13,42 @@
   --primary-light: #eff6ff;
   --danger-bg: #fef2f2;
   --danger-hover: #fee2e2;
-  --blue: #178CF2;
-  --blue-light: #E6F1FB;
+  --blue: #178cf2;
   --text: #111;
   --text-muted: #666;
   --border: #e8e8e8;
   --bg: #fafafa;
   --white: #fff;
   --radius: 12px;
+  --bcg-color: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+
+  /* for theme */
+  --bg: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
+  --header-bcg: #294669;
+  --black: rgb(0, 0, 0)  ;
+  --blue: #178CF2;
+  --blue-light: #E6F1FB;
+  --radius: 12px;
+  --green-text: green;
+  --logout-btn: rgb(237, 96, 96);
+}
+
+[data-theme='dark'] {
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --card-bg: #1e293b;
+  --header-bg: #0f172a;
+  --blue: #178CF2;
+  --blue-light: #1e3a5f;
+  --radius: 12px; 
 }
 
 * {
@@ -28,23 +56,202 @@
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease;
 }
 
 body {
   font-family: 'Wave';
+  background-color: var(--bg-secondary);
+  color: var(--text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @font-face {
   font-family: 'Wave';
-  src: url('/assets/fonts/123Wave-Regular-30904523489.ttf') format('truetype');
+  src: url('/assets/SS-GEO-HAKUNA-18662910211.otf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 a,
-li {
+li,
+ul,
+input,
+select,
+h1,
+h2,
+h3,
+button,
+span {
   text-decoration: none;
   list-style: none;
   font-family: 'Wave';
+  font-size: 20px !important;
 }
 
+.first-slide p,
+.first-slide h1,
+span {
+  font-family: 'Wave';
+  font-size: 28px !important;
+}
+
+.second-slide p,
+.second-slide h1,
+span {
+  font-family: 'Wave';
+  font-size: 28px !important;
+}
+
+.card p {
+  font-family: 'Wave';
+  font-size: 20px !important;
+}
+
+.main-div h1 {
+  font-size: 25px !important;
+}
+
+.discount {
+  font-family: 'Wave';
+  font-size: 18px !important;
+}
+
+.about-text {
+  font-family: 'Wave';
+  font-size: 20px !important;
+}
+
+.visual-card span {
+  font-family: 'Wave';
+  font-size: 18px !important;
+}
+
+[data-theme='dark'] .card {
+  background: var(--card-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+[data-theme='dark'] .card-description p,
+[data-theme='dark'] .prd-title,
+[data-theme='dark'] 
+[data-theme='dark'] .rating {
+  color: var(--text) !important;
+}
+
+[data-theme='dark'] .img-div {
+  background: #1e293b !important;
+}
+
+/* ნავბარი */
+[data-theme='dark'] header {
+  background-color: #090f1e !important;
+}
+
+/* ფუტერი */
+[data-theme='dark'] footer {
+  background-color: #090f1e !important;
+}
+
+/* ინფუთები */
+[data-theme='dark'] input,
+[data-theme='dark'] select,
+[data-theme='dark'] textarea {
+  background: #1e293b !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+/* user profile */
+[data-theme='dark'] .profile-card,
+[data-theme='dark'] .info-card,
+[data-theme='dark'] .actions-card {
+  background: var(--card-bg) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme='dark'] .profile-name,
+[data-theme='dark'] .info-value,
+[data-theme='dark'] .info-label {
+  color: var(--text) !important;
+}
+
+/* cart */
+[data-theme='dark'] .cart-item,
+[data-theme='dark'] .cart-total,
+[data-theme='dark'] .modal {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+}
+
+/* live search */
+[data-theme='dark'] .cat-btn {
+  background: #1e293b !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+[data-theme='dark'] .cat-btn:hover {
+  background-color: var(--primary) !important;
+}
+
+
+[data-theme='dark'] .sort-wrap select {
+  background: #1e293b !important;
+  color: var(--text) !important;
+}
+
+/* loading */
+[data-theme='dark'] .loading-div {
+  color: var(--text) !important;
+}
+
+
+
+[data-theme='dark'] body {
+  background-color: var(--bcg-color) !important;
+}
+
+
+[data-theme='dark'] .add-button{
+  border-top:2px solid var(--black) !important;
+  background-color: var(--bcg-color) !important;
+}
+
+[data-theme="dark"] .visual-card {
+  box-shadow: 0 8px 40px rgba(15, 23, 65, 2);
+}
+
+[data-theme="dark"] .value-card {
+  box-shadow: 0 8px 40px rgba(15, 23, 65, 2);
+}
+
+
+[data-theme="dark"] .info-card:hover {
+  border:1px solid var(--blue) !important;
+}
+
+[data-theme="dark"] .card-description .price {
+  color: var(--green-text) !important;
+}
+[data-theme="dark"] .app-cart {
+  background-color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .app-user {
+  background-color: var(--text-main) !important;
+}
+
+[dark-theme="dark"] .app-passrecover2 {
+  background-color: var(--text-main) !important;
+}
+
+[dark-theme="dark"] .email-wrapeer {
+  background-color: var(--header-bg) !important;
+}
+
+.title {
+  font-size: 35px !important;
+}

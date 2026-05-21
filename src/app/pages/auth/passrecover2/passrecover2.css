@@ -7,6 +7,7 @@
   justify-content: center;
   padding: 2rem 1rem;
   box-sizing: border-box;
+    background-color: var(--bg);
 }
 
 h2 {
@@ -25,7 +26,7 @@ h1 {
   color: #4f46e5;
 }
 
-.wrapper {
+.email-wrapper {
   width: 100%;
   max-width: 580px;
   height: 500px;
@@ -36,15 +37,21 @@ h1 {
   border-radius: 16px;
   padding: 2.5rem 2rem;
   box-shadow: 0 8px 40px rgba(15, 23, 42, 0.1);
-  border: 1px solid #f1f5f9;
+  border: 1px solid #f1f5f945;
   transition: box-shadow 0.3s ease;
+  background-color: var(--bg-secondary);
 }
 
-.wrapper:hover {
+h1 {
+  font-size: 28px !important;
+  color: var(--text);
+}
+
+.email-wrapper:hover {
   box-shadow: 0 16px 56px rgba(15, 23, 42, 0.15);
 }
 
-.wrapper form {
+.email-wrapper form {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -132,13 +139,21 @@ button:disabled {
 }
 
 .invalid {
-  font-size: 12px;
+  font-size: 20px !important;
   color: #ef4444;
   padding-left: 2px;
 }
 
 .forgot-span {
   text-align: center;
+}
+
+.forgot-span  {
+  font-size: 22px !important;
+}
+
+.forgot-span a {
+  font-size: 22px !important;
 }
 
 @media (max-width: 480px) {

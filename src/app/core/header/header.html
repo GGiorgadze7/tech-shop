@@ -32,23 +32,24 @@
         <li>
           <a routerLink="/contact" routerLinkActive="active" (click)="menuToggle()">კონტაქტი</a>
         </li>
-
-        <!-- <li><a routerLink="/signin" routerLinkActive="active" (click)="menuToggle()">Signin</a></li> -->
       </ul>
     </div>
   </div>
 
   <div class="btns">
     <button class="user-img" routerLink="/cart">
-      <img src="svg/cart-arrow-down-solid.svg" alt="" />
+      🛒
     </button>
 
     <button routerLink="/signin" class="user-img">
-      <img src="svg/user-solid.svg" alt="user" />
+      👤
     </button>
-  </div>
 
-  
+    <button class="theme-btn" (click)="theme.toggle()">
+    {{ theme.isDark() ? '☀️' : '🌙' }}
+  </button>
+
+  </div>
 </header>
 
 <img class="burger-bars" src="/svg/bars-solid.svg" (click)="menuToggle()" />

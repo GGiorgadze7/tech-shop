@@ -1,8 +1,8 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Signin } from '../../pages/auth/signin/signin';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../../services/theme.service';
+
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class Header {
   AppearMenu = false;
+  theme = inject(ThemeService);
 
   menuToggle() {
     this.AppearMenu = !this.AppearMenu;

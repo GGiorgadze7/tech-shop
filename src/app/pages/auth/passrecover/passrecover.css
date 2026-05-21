@@ -4,10 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg);
 }
 
 .wrapper {
-  background-color: white;
+  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   gap: 20px;
