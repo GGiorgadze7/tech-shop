@@ -13,10 +13,15 @@
   border-radius: 8px;
   color: #fff;
   box-shadow: 0 16px 36px rgb(16 24 40 / 18%);
+  font-size: 14px !important;
 }
 
 .toast.success {
   background: #16803c;
+}
+
+.toast span{
+  font-size: 20px !important;
 }
 
 .toast.error {
@@ -39,6 +44,6 @@
   border-radius: 50%;
   background: rgb(255 255 255 / 18%);
   color: inherit;
-  font: inherit;
+  font: 12px !important;
   cursor: pointer;
 }

@@ -7,7 +7,7 @@
   justify-content: center;
   padding: 2rem 1rem;
   box-sizing: border-box;
-    background-color: var(--bg);
+  background-color: var(--bg);
 }
 
 h2 {
@@ -148,7 +148,7 @@ button:disabled {
   text-align: center;
 }
 
-.forgot-span  {
+.forgot-span {
   font-size: 22px !important;
 }
 

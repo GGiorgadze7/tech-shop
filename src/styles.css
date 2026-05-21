@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
@@ -30,9 +29,9 @@
   --border: #e2e8f0;
   --card-bg: #ffffff;
   --header-bcg: #294669;
-  --black: rgb(0, 0, 0)  ;
-  --blue: #178CF2;
-  --blue-light: #E6F1FB;
+  --black: rgb(0, 0, 0);
+  --blue: #178cf2;
+  --blue-light: #e6f1fb;
   --radius: 12px;
   --green-text: green;
   --logout-btn: rgb(237, 96, 96);
@@ -46,9 +45,9 @@
   --border: #334155;
   --card-bg: #1e293b;
   --header-bg: #0f172a;
-  --blue: #178CF2;
+  --blue: #178cf2;
   --blue-light: #1e3a5f;
-  --radius: 12px; 
+  --radius: 12px;
 }
 
 * {
@@ -137,8 +136,7 @@ span {
 
 [data-theme='dark'] .card-description p,
 [data-theme='dark'] .prd-title,
-[data-theme='dark'] 
-[data-theme='dark'] .rating {
+[data-theme='dark'] [data-theme='dark'] .rating {
   color: var(--text) !important;
 }
 
@@ -146,17 +144,14 @@ span {
   background: #1e293b !important;
 }
 
-/* ნავბარი */
 [data-theme='dark'] header {
   background-color: #090f1e !important;
 }
 
-/* ფუტერი */
 [data-theme='dark'] footer {
   background-color: #090f1e !important;
 }
 
-/* ინფუთები */
 [data-theme='dark'] input,
 [data-theme='dark'] select,
 [data-theme='dark'] textarea {
@@ -197,7 +192,6 @@ span {
   background-color: var(--primary) !important;
 }
 
-
 [data-theme='dark'] .sort-wrap select {
   background: #1e293b !important;
   color: var(--text) !important;
@@ -208,47 +202,43 @@ span {
   color: var(--text) !important;
 }
 
-
-
 [data-theme='dark'] body {
   background-color: var(--bcg-color) !important;
 }
 
-
-[data-theme='dark'] .add-button{
-  border-top:2px solid var(--black) !important;
+[data-theme='dark'] .add-button {
+  border-top: 2px solid var(--black) !important;
   background-color: var(--bcg-color) !important;
 }
 
-[data-theme="dark"] .visual-card {
+[data-theme='dark'] .visual-card {
   box-shadow: 0 8px 40px rgba(15, 23, 65, 2);
 }
 
-[data-theme="dark"] .value-card {
+[data-theme='dark'] .value-card {
   box-shadow: 0 8px 40px rgba(15, 23, 65, 2);
 }
 
-
-[data-theme="dark"] .info-card:hover {
-  border:1px solid var(--blue) !important;
+[data-theme='dark'] .info-card:hover {
+  border: 1px solid var(--blue) !important;
 }
 
-[data-theme="dark"] .card-description .price {
+[data-theme='dark'] .card-description .price {
   color: var(--green-text) !important;
 }
-[data-theme="dark"] .app-cart {
+[data-theme='dark'] .app-cart {
   background-color: var(--text-main) !important;
 }
 
-[data-theme="dark"] .app-user {
+[data-theme='dark'] .app-user {
   background-color: var(--text-main) !important;
 }
 
-[dark-theme="dark"] .app-passrecover2 {
+[dark-theme='dark'] .app-passrecover2 {
   background-color: var(--text-main) !important;
 }
 
-[dark-theme="dark"] .email-wrapeer {
+[dark-theme='dark'] .email-wrapeer {
   background-color: var(--header-bg) !important;
 }
 

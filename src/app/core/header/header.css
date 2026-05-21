@@ -112,7 +112,7 @@ header img {
   text-align: center;
 }
 
-.user-img  {
+.user-img {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -136,7 +136,7 @@ header img {
   position: absolute;
   display: none;
   width: 35px;
-  top: 13px;
+  top: 28%;
   right: 1%;
 }
 
@@ -195,7 +195,6 @@ header img {
     padding: 0 12px;
     height: 7vh;
     /* justify-content: space-evenly; */
-
   }
 
   .logo-img {
@@ -210,10 +209,9 @@ header img {
     width: 75%;
   }
 
-
   .burger-bars {
     width: 32px;
-    top: 13px;
+    top: 26%;
   }
 
   .btns {
@@ -223,8 +221,6 @@ header img {
   .info-div p {
     font-size: 20px !important;
   }
-  
-
 }
 
 @media (max-width: 380px) {

@@ -42,8 +42,6 @@
   text-align: center;
 }
 
-
-
 .title-span {
   color: var(--blue);
 }
@@ -97,7 +95,9 @@ input {
   font-family: inherit;
   background: var(--bg-secondary);
   color: var(--text);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
   box-sizing: border-box;
 }
 
@@ -145,8 +145,8 @@ select:focus {
   margin-top: 4px;
 }
 
-.btn-div span{
-font-size: 18px !important; 
+.btn-div span {
+  font-size: 18px !important;
 }
 
 .btn-div button {
@@ -160,7 +160,9 @@ font-size: 18px !important;
   color: white;
   border-radius: 10px;
   border: none;
-  transition: opacity 0.15s, transform 0.15s;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
 }
 
 .btn-div button:hover:not(:disabled) {

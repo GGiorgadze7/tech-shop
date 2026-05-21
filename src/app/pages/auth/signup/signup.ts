@@ -19,7 +19,7 @@ export class Signup {
     email: '',
     password: '',
     address: '',
-    phone: '+995577109337',
+    phone: '+995577189408',
     zipcode: '',
     avatar: 'https://linkedin.com',
     gender: 'MALE',

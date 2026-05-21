@@ -1,6 +1,6 @@
 :host {
   width: 100%;
-  min-height:100vh ;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   padding: 42px 18px 60px;
@@ -60,13 +60,17 @@
 .cart-item p {
   margin: 0.25rem 0;
   color: var(--text-muted);
-  font-size: 0.97rem;
+  font-size: 19px !important;
 }
 
 .cart-item .item-title {
   font-size: 18px;
   color: var(--text);
   font-weight: 600;
+}
+
+.item-title {
+  font-size: 22px !important;
 }
 
 .cart-item .sum-price {
@@ -91,6 +95,7 @@
   margin: 0;
   color: var(--text);
   font-weight: 600;
+  font-size: 22px !important;
 }
 
 .cart-item .deleteBtn button {
@@ -98,8 +103,8 @@
   top: 12px;
   right: 12px;
   background: #ef4444;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   border-radius: 6px;
   display: flex;
@@ -109,6 +114,11 @@
   cursor: pointer;
   color: white;
   transition: all 0.2s;
+}
+
+.deleteBtn img {
+  width: 70%;
+  height: 70%;
 }
 
 .cart-item .deleteBtn button:hover {
@@ -199,7 +209,6 @@
   opacity: 0.4;
 }
 
-/* MODAL */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -386,10 +395,8 @@
   padding-left: 2px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 760px) {
   :host {
-    margin-bottom: 60px;
     padding: 24px 12px 40px;
   }
 
