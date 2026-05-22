@@ -235,4 +235,9 @@ header img {
   .burger-menu {
     width: 85%;
   }
+
+  .btns {
+    margin-right: 40%;
+    padding-right: 0;
+  }
 }
