@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 
@@ -16,11 +17,15 @@ export class Contact {
     message: '',
   };
 
+  private http = inject(HttpClient)
+
   isSubmitting = false;
   successMessage = false;
 
   onSubmit(form: NgForm) {
     if (form.invalid) return;
+
+    this.http.post('https://giorgadze.app.n8n.cloud/webhook/contact-form', this.contactData).subscribe();
 
     this.isSubmitting = true;
 

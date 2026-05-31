@@ -1,9 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from "@angular/router";
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from '../../../services/notification.service';
-
 
 @Component({
   selector: 'app-signin',
@@ -12,8 +11,7 @@ import { NotificationService } from '../../../services/notification.service';
   styleUrl: './signin.css',
 })
 export class Signin {
-
- signInData = {
+  signInData = {
     email: '',
     password: '',
   };
@@ -26,8 +24,9 @@ export class Signin {
     this.http.post('https://api.everrest.educata.dev/auth/sign_in', this.signInData).subscribe({
       next: (data: any) => {
         (localStorage.setItem('access_token', data.access_token),
-          localStorage.setItem('refresh_token', data.refresh_token));
-          this.notification.success('ავტორიზაცია წარმატებით დასრულდა');
+          localStorage.setItem('refresh_token', data.refresh_token),
+          localStorage.setItem('user_email', this.signInData.email));
+        this.notification.success('ავტორიზაცია წარმატებით დასრულდა');
         this.router.navigateByUrl('/');
       },
       error: () => {
@@ -35,5 +34,4 @@ export class Signin {
       },
     });
   }
-
 }

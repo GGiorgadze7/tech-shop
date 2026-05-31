@@ -132,6 +132,31 @@ export class Cart {
     this.showCheckoutForm.set(true);
   }
 
+sendCheckoutEmail() {
+  const email = localStorage.getItem('user_email');
+
+  const products = this.cartProducts().map(p => ({
+    name: p.title,
+    quantity: p.quantity,
+    pricePerQuantity: p.pricePerQuantity,
+  }));
+
+  console.log('products:', products); 
+
+  this.http.post('https://giorgadze.app.n8n.cloud/webhook/checkout', {
+    email,
+    products,
+    total: this.cartData()?.totalPrice,
+  }).subscribe({
+    next: (res) => console.log('n8n response:', res),
+    error: (err) => console.log('n8n error:', err),
+  });
+}
+  
+
+  
+
+
   confirmOrder() {
     if (this.cheCkoutData.CardNumber.length < 16) {
       this.notification.error('ბარათის მონაცემები არასწორია');
@@ -148,9 +173,11 @@ export class Cart {
       )
       .subscribe({
         next: () => {
+          this.sendCheckoutEmail();
           this.cartProducts.set([]);
           this.cartData.set(null);
           this.showCheckoutForm.set(false);
+
           this.notification.success('შეკვეთა წარმატებით გაფორმდა!');
         },
         error: () => this.notification.error('მოხდა შეცდომა'),

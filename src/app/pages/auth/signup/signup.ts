@@ -11,7 +11,6 @@ import { NotificationService } from '../../../services/notification.service';
   styleUrl: './signup.css',
 })
 export class Signup {
-
   signupData = {
     firstName: '',
     lastName: '',
@@ -37,20 +36,19 @@ export class Signup {
   private router = inject(Router);
   private notification = inject(NotificationService);
 
-   private n8nWebhookUrl = 'https://giorgadze.app.n8n.cloud/webhook/register-email';
+  private n8nWebhookUrl = 'https://giorgadze.app.n8n.cloud/webhook/register-email';
 
-   private sendWelcomeEmail(firstName: string,  email: string,) {
-    this.http.post(this.n8nWebhookUrl, {
-      name: firstName,
-      email: email,
-    }).subscribe({
-      next: () => console.log('მეილი გაიგზავნა'),
-      error: (err) => console.error('მეილის გაგზავნა ვერ მოხერხდა', err),
-    });
+  private sendWelcomeEmail(firstName: string, email: string) {
+    this.http
+      .post(this.n8nWebhookUrl, {
+        name: firstName,
+        email: email,
+      })
+      .subscribe({
+        next: () => console.log('მეილი გაიგზავნა'),
+        error: (err) => console.error('მეილის გაგზავნა ვერ მოხერხდა', err),
+      });
   }
-
-
-
 
   onSubmit() {
     if (this.signupData.age < 18) {
@@ -63,13 +61,11 @@ export class Signup {
       return;
     }
 
-    
-
     this.http.post('https://api.everrest.educata.dev/auth/sign_up', this.signupData).subscribe({
       next: (response) => {
         console.log(response);
 
-          this.sendWelcomeEmail(this.signupData.firstName, this.signupData.email);
+        this.sendWelcomeEmail(this.signupData.firstName, this.signupData.email);
 
         this.notification.success('რეგისტრაცია წარმატებით დასრულდა');
         this.router.navigateByUrl('/signin');
