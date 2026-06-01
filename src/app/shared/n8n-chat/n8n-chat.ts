@@ -14,7 +14,7 @@ constructor() {
 
   afterNextRender(() => {
     createChat({
-      webhookUrl: 'https://giorgadze.app.n8n.cloud/webhook/d8d9d818-48a3-44a4-94c5-12563afb88f8/chat',
+      webhookUrl: 'https://giorgadze.app.n8n.cloud/webhook/da58e846-6389-4f04-b611-532d7e8b4902/chat',
       target: '#n8n-chat',
       mode: 'window',
       defaultLanguage:'en',        
